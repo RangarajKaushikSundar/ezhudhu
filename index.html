@@ -461,6 +461,65 @@
         background: #fff;
         color: #000;
       }
+
+      /* ---------- TOGGLE SWITCH ---------- */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+
+      .slider.round {
+        border-radius: 24px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
+      .mode-label {
+        margin-left: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        vertical-align: middle;
+      }
     </style>
   </head>
 
@@ -469,22 +528,23 @@
       <h1>தமிழ்</h1>
       <h1>PAZHAGU</h1>
       <p>Daily Tamil Word</p>
-      <div class="mode-buttons">
-        <button class="mode-btn active" data-mode="normal">Normal Mode</button>
-        <button class="mode-btn" data-mode="hard">Hard Mode</button>
-      </div>
     </header>
-
     <div class="board-wrapper">
       <div class="board">
         <div class="hint">
           <h3>Game Rules</h3>
           Write the Tanglish word in Tamil script within 3 attempts.<br />
-
           Use native letters (ர ≠ ற, ல ≠ ள ≠ ழ).
         </div>
 
-        <h3>WORD OF THE DAY</h3>
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+          <h3 style="margin: 0;">WORD OF THE DAY</h3>
+          <label class="switch" style="margin-left: 20px;">
+            <input type="checkbox" id="hardModeToggle">
+            <span class="slider round"></span>
+          </label>
+          <span class="mode-label" id="modeLabel">EASY</span>
+        </div>
         <div class="meaning">
           <div class="row">
             <div class="column">
@@ -1454,7 +1514,8 @@
       const keyboardWrapper = document.querySelector(".keyboard-wrapper");
       const tanglishEl = document.getElementById("tanglish");
       const toggleTanglishBtn = document.getElementById("toggleTanglishBtn");
-      const modeButtons = document.querySelectorAll(".mode-btn");
+      const hardModeToggle = document.getElementById("hardModeToggle");
+      const modeLabel = document.getElementById("modeLabel");
 
       function updateDisplay() {
         tanglishEl.textContent = tanglishVisible ? word.tanglish : "??????";
@@ -1504,21 +1565,18 @@
       renderEmptyGrid();
 
       /* ---------- MODE SWITCHING ---------- */
-      modeButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const newMode = btn.dataset.mode;
-          if (currentMode === newMode) return;
+      hardModeToggle.addEventListener("change", () => {
+        const newMode = hardModeToggle.checked ? "hard" : "normal";
+        if (currentMode === newMode) return;
 
-          // Update current mode
-          currentMode = newMode;
+        // Update current mode
+        currentMode = newMode;
 
-          // Update button styles
-          modeButtons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
+        // Update label
+        modeLabel.textContent = hardModeToggle.checked ? "HARD" : "EASY";
 
-          // Reset and reinitialize game
-          initializeGame();
-        });
+        // Reset and reinitialize game
+        initializeGame();
       });
 
       /* ---------- TOGGLE TANGLISH IN HARD MODE ---------- */
