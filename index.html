@@ -363,8 +363,6 @@
         <div id="grid2" class="grid"></div>
         <div id="grid3" class="grid"></div>
 
-        <button id="submit">Submit</button>
-
         <div id="resultmodal" class="resultmodal">
           <div class="resultmodal-content">
             <span class="resultmodalclose">&times;</span>
@@ -429,7 +427,7 @@
         </div>
 
         <div class="key-row">
-          <div id="clear" class="key wide action">↺</div>
+          <div id="enter" class="key wide action">ENTER</div>
           <div class="key">ங</div>
           <div class="key">ஞ</div>
           <div class="key">ண</div>
@@ -474,8 +472,6 @@
 
       document.getElementById("tanglish").textContent = word.tanglish;
       document.getElementById("meaning").textContent = word.meaning;
-      document.getElementById("submit").textContent =
-        "Submit (" + (3 - attempts) + " attempts left)";
 
       const gridEl1 = document.getElementById("grid1");
       const gridEl2 = document.getElementById("grid2");
@@ -495,9 +491,7 @@
       renderEmptyGrid();
 
       /* ---------- GAME ---------- */
-      document.getElementById("submit").onclick = () => {
-        document.getElementById("submit").textContent =
-          "Submit (" + (3 - attempts - 1) + " attempts left)";
+      document.getElementById("enter").onclick = () => {
         if (attempts >= 3) return;
 
         const letters = currentInput;
@@ -509,7 +503,7 @@
           );
           return;
         }
-
+ 
         let rowEmoji = "";
         letters.forEach((l, i) => {
           if (l === target[i]) {
@@ -549,7 +543,7 @@
           modal.style.display = "none";
         };
 
-        document.getElementById("submit").disabled = true;
+        document.getElementById("enter").disabled = true;
         let messageEl = document.getElementById("message");
         messageEl.textContent = win
           ? "Correct! 🎉"
@@ -650,9 +644,8 @@ ${emojiGrid.join("\n")}`;
         if (e.target.id === "back") {
           currentInput.pop();
           renderGridForAttempt(currentAttempt);
-        } else if (e.target.id === "clear") {
-          currentInput = [];
-          renderGridForAttempt(currentAttempt);
+        } else if (e.target.id === "enter") {          
+          // dont do anything
         } else {
           const key = e.target.textContent;
           if (currentAttempt <= grids.length) {
