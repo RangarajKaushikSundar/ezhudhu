@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>EZHUDHU – Daily Tamil Word</title>
+    <title>தமிழ் PAZHAGU - Daily Challenge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <style>
@@ -21,6 +21,11 @@
       header {
         text-align: center;
         padding: 20px 10px 10px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        margin: 10px;
+        background: #fff;
+        color: black;
       }
 
       header h1 {
@@ -335,7 +340,8 @@
 
   <body>
     <header>
-      <h1>EZHUDHU</h1>
+      <h1>தமிழ்</h1>
+      <h1>PAZHAGU</h1>
       <p>Daily Tamil Word</p>
     </header>
 
@@ -551,9 +557,9 @@
         messageEl.style.color = win ? "#4caf50" : "#f44336";
         messageEl.style.fontSize = "24px";
 
-        const share = `EZHUDHU #${getDailyIndex(WORDS.length)}
+        const share = `தமிழ் PAZHAGU #${getDailyIndex(WORDS.length)}
 ${emojiGrid.join("\n")}`;
-        // https://ezhudhu.com
+        // https://thamizhpazhagu.com
         const shareEl = document.getElementById("share");
         shareEl.textContent = share;
         shareEl.style.fontSize = "16px";
