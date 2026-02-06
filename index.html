@@ -520,13 +520,57 @@
         font-size: 16px;
         vertical-align: middle;
       }
+
+      /** GLITCH EFFECT **/
+      :root {
+            --glow-color: black;
+        }
+
+        
+        /* Flickering CRT Screen effect */
+        .screen-container {
+            
+            position: relative;
+            animation: flicker 0.15s infinite;
+        }
+
+        .glitch-container {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--glow-color);
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 8px;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            50% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+
+        /* Subtle distortion */
+        @keyframes jitter {
+            0% { transform: skew(0deg); }
+            10% { transform: skew(1deg); }
+            20% { transform: skew(-1deg); }
+            30% { transform: skew(0.5deg); }
+            100% { transform: skew(0deg); }
+        }
+
+        .is-glitching {
+            animation: jitter 0.1s infinite;
+        }
     </style>
   </head>
 
   <body>
     <header>
       <h1>தமிழ்</h1>
-      <h1>PAZHAGU</h1>
+      <div class="screen-container">
+        <div class="glitch-container" id="glitch-text">PAZHAGU</div>
+      </div>
       <p>Daily Tamil Word</p>
     </header>
     <div class="board-wrapper">
@@ -652,6 +696,46 @@
     </section>
 
     <script>
+      /* ---------- GLITCH EFFECT ---------- */
+      const textElement = document.getElementById('glitch-text');
+        const states = ["PAZHAGU", "பழகு"];
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZபழகுகிதுஎ$%&/<>[]";
+        let currentStateIndex = 0;
+
+        function solve() {
+            const targetText = states[currentStateIndex];
+            let iteration = 0;
+            
+            // Add jitter class during transition
+            textElement.classList.add('is-glitching');
+            
+            const interval = setInterval(() => {
+                textElement.innerText = targetText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return targetText[index];
+                        }
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    })
+                    .join("");
+
+                if (iteration >= targetText.length) {
+                    clearInterval(interval);
+                    textElement.classList.remove('is-glitching');
+                    
+                    setTimeout(() => {
+                        currentStateIndex = (currentStateIndex + 1) % states.length;
+                        solve();
+                    }, 2500);
+                }
+
+                iteration += 1 / 4; 
+            }, 40);
+        }
+
+        solve();
+
       /* ---------- DATA ---------- */
       const WORDS = [
         { tamil: "நில்லு", tanglish: "Nillu", meaning: "Stand (command)" },
