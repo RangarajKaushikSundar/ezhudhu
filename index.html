@@ -335,6 +335,53 @@
           opacity: 1;
         }
       }
+
+      /* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+      /* Tablets/small laptops: slightly compact */
+      @media (max-width: 500px) {
+        .keyboard-wrapper {
+          padding: 8px 4px 10px;
+        }
+
+        .keyboard {
+          padding: 0 4px;
+        }
+
+        .key {
+          padding: 8px 3px;
+          font-size: 14px;
+        }
+
+        .key-row {
+          gap: 3px;
+          margin-bottom: 4px;
+        }
+      }
+
+      /* Mobile phones (e.g., Pixel 7): compress significantly */
+      @media (max-width: 420px) {
+        body {
+          padding-bottom: 240px;
+        }
+
+        .keyboard-wrapper {
+          padding: 6px 3px 8px;
+        }
+
+        .keyboard {
+          padding: 0 2px;
+        }
+
+        .key {
+          padding: 6px 2px;
+          font-size: 12px;
+        }
+
+        .key-row {
+          gap: 2px;
+          margin-bottom: 3px;
+        }
+      }
     </style>
   </head>
 
