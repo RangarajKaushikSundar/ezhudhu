@@ -43,7 +43,6 @@
       .board-wrapper {
         display: flex;
         justify-content: center;
-        
       }
 
       .board {
@@ -180,6 +179,9 @@
         font-size: 16px;
         user-select: none;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .key.wide {
@@ -252,7 +254,7 @@
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 50%;
+        width: 32vw;
       }
 
       /* The Close Button */
@@ -346,7 +348,6 @@
       }
 
       .mode-btn {
-        
         border-radius: 8px;
         border: 2px solid #000;
         background: #fff;
@@ -404,25 +405,67 @@
       /* Mobile phones (e.g., Pixel 7): compress significantly */
       @media (max-width: 420px) {
         body {
-          padding-bottom: 240px;
+          padding-bottom: 320px; /* ensure space for 250px keyboard + margin */
         }
 
         .keyboard-wrapper {
           padding: 6px 3px 8px;
+          height: 250px; /* fixed height for mobile */
+          box-sizing: border-box;
         }
 
         .keyboard {
           padding: 0 2px;
-        }
-
-        .key {
-          padding: 6px 2px;
-          font-size: 12px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
 
         .key-row {
-          gap: 2px;
-          margin-bottom: 3px;
+          gap: 4px;
+          margin-bottom: 6px;
+        }
+
+        .key {
+          padding: 2px 2px;
+          font-size: 13px;
+          min-height: 52px;
+        }
+        .resultmodal-content {
+          width: 50vw;
+        }
+      }
+
+      /* Mobile phones (e.g., Pixel 7): compress significantly */
+      @media (max-width: 390px) {
+        body {
+          padding-bottom: 320px; /* ensure space for 250px keyboard + margin */
+        }
+
+        .keyboard-wrapper {
+          padding: 6px 3px 8px;
+          height: 200px; /* fixed height for mobile */
+          box-sizing: border-box;
+        }
+
+        .keyboard {
+          padding: 0px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .key-row {
+          gap: 4px;
+          margin-bottom: 6px;
+        }
+
+        .key {
+          padding: 0px;
+          font-size: 12px;
+          min-height: 43px;
         }
       }
 
@@ -449,7 +492,6 @@
 
       .column strong {
         font-size: 20px;
-        
       }
 
       .column {
@@ -523,45 +565,59 @@
 
       /** GLITCH EFFECT **/
       :root {
-            --glow-color: black;
-        }
+        --glow-color: black;
+      }
 
-        
-        /* Flickering CRT Screen effect */
-        .screen-container {
-            
-            position: relative;
-            animation: flicker 0.15s infinite;
-        }
+      /* Flickering CRT Screen effect */
+      .screen-container {
+        position: relative;
+        animation: flicker 0.15s infinite;
+      }
 
-        .glitch-container {
-            font-family: 'Courier New', Courier, monospace;
-            color: var(--glow-color);
-            font-size: 2rem;
-            font-weight: bold;
-            letter-spacing: 8px;
-            position: relative;
-            text-transform: uppercase;
-        }
+      .glitch-container {
+        font-family: "Courier New", Courier, monospace;
+        color: var(--glow-color);
+        font-size: 2rem;
+        font-weight: bold;
+        letter-spacing: 8px;
+        position: relative;
+        text-transform: uppercase;
+      }
 
-        @keyframes flicker {
-            0% { opacity: 0.97; }
-            50% { opacity: 1; }
-            100% { opacity: 0.98; }
+      @keyframes flicker {
+        0% {
+          opacity: 0.97;
         }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.98;
+        }
+      }
 
-        /* Subtle distortion */
-        @keyframes jitter {
-            0% { transform: skew(0deg); }
-            10% { transform: skew(1deg); }
-            20% { transform: skew(-1deg); }
-            30% { transform: skew(0.5deg); }
-            100% { transform: skew(0deg); }
+      /* Subtle distortion */
+      @keyframes jitter {
+        0% {
+          transform: skew(0deg);
         }
+        10% {
+          transform: skew(1deg);
+        }
+        20% {
+          transform: skew(-1deg);
+        }
+        30% {
+          transform: skew(0.5deg);
+        }
+        100% {
+          transform: skew(0deg);
+        }
+      }
 
-        .is-glitching {
-            animation: jitter 0.1s infinite;
-        }
+      .is-glitching {
+        animation: jitter 0.1s infinite;
+      }
     </style>
   </head>
 
@@ -581,10 +637,17 @@
           Use native letters (ர ≠ ற, ல ≠ ள ≠ ழ).
         </div>
 
-        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
-          <h3 style="margin: 0;">WORD OF THE DAY</h3>
-          <label class="switch" style="margin-left: 20px;">
-            <input type="checkbox" id="hardModeToggle">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+          "
+        >
+          <h3 style="margin: 0">WORD OF THE DAY</h3>
+          <label class="switch" style="margin-left: 20px">
+            <input type="checkbox" id="hardModeToggle" />
             <span class="slider round"></span>
           </label>
           <span class="mode-label" id="modeLabel">EASY</span>
@@ -598,7 +661,11 @@
                 </div>
                 <div class="column">
                   <button class="toggle-tanglish-btn" id="toggleTanglishBtn">
-                    <img src="eye.png" alt="Show Tanglish" style="width:16px; vertical-align:middle;" />
+                    <img
+                      src="eye.png"
+                      alt="Show Tanglish"
+                      style="width: 16px; vertical-align: middle"
+                    />
                   </button>
                 </div>
               </div>
@@ -631,7 +698,7 @@
       </div>
     </div>
 
-    <!-- ---------- KEYBOARD ---------- -->
+    <!-- ---------- KEYBOARD (4 rows: 12 / 11 / 12 / 12) ---------- -->
     <section class="keyboard-wrapper">
       <div class="keyboard">
         <div class="key-row">
@@ -644,7 +711,6 @@
           <div class="key">எ</div>
           <div class="key">ஏ</div>
           <div class="key">ஐ</div>
-          <div class="key">ஒ</div>
           <div class="key">ஓ</div>
           <div class="key">ஔ</div>
         </div>
@@ -697,44 +763,44 @@
 
     <script>
       /* ---------- GLITCH EFFECT ---------- */
-      const textElement = document.getElementById('glitch-text');
-        const states = ["PAZHAGU", "பழகு"];
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZபழகுகிதுஎ$%&/<>[]";
-        let currentStateIndex = 0;
+      const textElement = document.getElementById("glitch-text");
+      const states = ["PAZHAGU", "பழகு"];
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZபழகுகிதுஎ$%&/<>[]";
+      let currentStateIndex = 0;
 
-        function solve() {
-            const targetText = states[currentStateIndex];
-            let iteration = 0;
-            
-            // Add jitter class during transition
-            textElement.classList.add('is-glitching');
-            
-            const interval = setInterval(() => {
-                textElement.innerText = targetText
-                    .split("")
-                    .map((letter, index) => {
-                        if (index < iteration) {
-                            return targetText[index];
-                        }
-                        return chars[Math.floor(Math.random() * chars.length)];
-                    })
-                    .join("");
+      function solve() {
+        const targetText = states[currentStateIndex];
+        let iteration = 0;
 
-                if (iteration >= targetText.length) {
-                    clearInterval(interval);
-                    textElement.classList.remove('is-glitching');
-                    
-                    setTimeout(() => {
-                        currentStateIndex = (currentStateIndex + 1) % states.length;
-                        solve();
-                    }, 2500);
-                }
+        // Add jitter class during transition
+        textElement.classList.add("is-glitching");
 
-                iteration += 1 / 4; 
-            }, 40);
-        }
+        const interval = setInterval(() => {
+          textElement.innerText = targetText
+            .split("")
+            .map((letter, index) => {
+              if (index < iteration) {
+                return targetText[index];
+              }
+              return chars[Math.floor(Math.random() * chars.length)];
+            })
+            .join("");
 
-        solve();
+          if (iteration >= targetText.length) {
+            clearInterval(interval);
+            textElement.classList.remove("is-glitching");
+
+            setTimeout(() => {
+              currentStateIndex = (currentStateIndex + 1) % states.length;
+              solve();
+            }, 2500);
+          }
+
+          iteration += 1 / 4;
+        }, 40);
+      }
+
+      solve();
 
       /* ---------- DATA ---------- */
       const WORDS = [
