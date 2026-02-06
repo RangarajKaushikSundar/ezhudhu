@@ -247,7 +247,7 @@
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 30%;
+        width: 50%;
       }
 
       /* The Close Button */
@@ -343,6 +343,7 @@
       <div class="board">
         <div class="hint">
           Write the Tanglish word in Tamil script within 3 attempts.<br />
+          📱 Tip: Enable <strong>Tamil keyboard</strong> on your phone.<br />
           Use native letters (ர ≠ ற, ல ≠ ள ≠ ழ).
         </div>
 
@@ -444,8 +445,2621 @@
     <script>
       /* ---------- DATA ---------- */
       const WORDS = [
-        { tamil: "உறவு", tanglish: "URAVU", meaning: "Relationship" },
-        
+        {
+          tamil: "வணக்கம்",
+          tanglish: "Vanakkam",
+          meaning: "Hello/Greetings",
+        },
+        {
+          tamil: "எப்படி",
+          tanglish: "Eppadi",
+          meaning: "How",
+        },
+        {
+          tamil: "நல்லது",
+          tanglish: "Nalladhu",
+          meaning: "Good",
+        },
+        {
+          tamil: "நன்றி",
+          tanglish: "Nandri",
+          meaning: "Thank you",
+        },
+        {
+          tamil: "மறுபடியும்",
+          tanglish: "Marupadiyum",
+          meaning: "Again",
+        },
+        {
+          tamil: "சந்திப்பு",
+          tanglish: "Sandhippu",
+          meaning: "Meet",
+        },
+        {
+          tamil: "ஒன்று",
+          tanglish: "Ondru",
+          meaning: "One",
+        },
+        {
+          tamil: "இரண்டு",
+          tanglish: "Irandu",
+          meaning: "Two",
+        },
+        {
+          tamil: "மூன்று",
+          tanglish: "Moondru",
+          meaning: "Three",
+        },
+        {
+          tamil: "நான்கு",
+          tanglish: "Naanku",
+          meaning: "Four",
+        },
+        {
+          tamil: "ஐந்து",
+          tanglish: "Ainthu",
+          meaning: "Five",
+        },
+        {
+          tamil: "ஆறு",
+          tanglish: "Aaru",
+          meaning: "Six",
+        },
+        {
+          tamil: "ஏழு",
+          tanglish: "Ezhu",
+          meaning: "Seven",
+        },
+        {
+          tamil: "எட்டு",
+          tanglish: "Ettu",
+          meaning: "Eight",
+        },
+        {
+          tamil: "ஒன்பது",
+          tanglish: "Onbathu",
+          meaning: "Nine",
+        },
+        {
+          tamil: "பத்து",
+          tanglish: "Pathu",
+          meaning: "Ten",
+        },
+        {
+          tamil: "அம்மா",
+          tanglish: "Amma",
+          meaning: "Mother",
+        },
+        {
+          tamil: "அப்பா",
+          tanglish: "Appa",
+          meaning: "Father",
+        },
+        {
+          tamil: "அண்ணன்",
+          tanglish: "Annan",
+          meaning: "Elder brother",
+        },
+        {
+          tamil: "அக்கா",
+          tanglish: "Akka",
+          meaning: "Elder sister",
+        },
+        {
+          tamil: "தம்பி",
+          tanglish: "Thambi",
+          meaning: "Younger brother",
+        },
+        {
+          tamil: "தங்கை",
+          tanglish: "Thangai",
+          meaning: "Younger sister",
+        },
+        {
+          tamil: "பாட்டி",
+          tanglish: "Paatti",
+          meaning: "Grandmother",
+        },
+        {
+          tamil: "தாத்தா",
+          tanglish: "Thaatha",
+          meaning: "Grandfather",
+        },
+        {
+          tamil: "இப்போ",
+          tanglish: "Ippo",
+          meaning: "Now",
+        },
+        {
+          tamil: "நாளைக்கு",
+          tanglish: "Nalaiku",
+          meaning: "Tomorrow",
+        },
+        {
+          tamil: "நேற்று",
+          tanglish: "Nethu",
+          meaning: "Yesterday",
+        },
+        {
+          tamil: "காலை",
+          tanglish: "Kaalai",
+          meaning: "Morning",
+        },
+        {
+          tamil: "மதியம்",
+          tanglish: "Mathiyam",
+          meaning: "Afternoon",
+        },
+        {
+          tamil: "மாலை",
+          tanglish: "Maalai",
+          meaning: "Evening",
+        },
+        {
+          tamil: "இரவு",
+          tanglish: "Iravu",
+          meaning: "Night",
+        },
+        {
+          tamil: "போ",
+          tanglish: "Po",
+          meaning: "To go",
+        },
+        {
+          tamil: "வா",
+          tanglish: "Vaa",
+          meaning: "To come",
+        },
+        {
+          tamil: "சாப்பிடு",
+          tanglish: "Saapidu",
+          meaning: "To eat",
+        },
+        {
+          tamil: "குடி",
+          tanglish: "Kudi",
+          meaning: "To drink",
+        },
+        {
+          tamil: "பேசு",
+          tanglish: "Pesu",
+          meaning: "To speak",
+        },
+        {
+          tamil: "கேளு",
+          tanglish: "Kelu",
+          meaning: "To listen",
+        },
+        {
+          tamil: "பார்",
+          tanglish: "Paar",
+          meaning: "To see/look",
+        },
+        {
+          tamil: "மழை",
+          tanglish: "Mazhai",
+          meaning: "Rain",
+        },
+        {
+          tamil: "வெயில்",
+          tanglish: "Veyil",
+          meaning: "Sun",
+        },
+        {
+          tamil: "குளிர்",
+          tanglish: "Kulir",
+          meaning: "Cold",
+        },
+        {
+          tamil: "வெப்பம்",
+          tanglish: "Veppam",
+          meaning: "Heat",
+        },
+        {
+          tamil: "காற்று",
+          tanglish: "Kaathu",
+          meaning: "Wind",
+        },
+        {
+          tamil: "கோடை",
+          tanglish: "Kodai",
+          meaning: "Summer",
+        },
+        {
+          tamil: "மழைக்காலம்",
+          tanglish: "Mazhaikkaalam",
+          meaning: "Rainy season",
+        },
+        {
+          tamil: "நல்ல",
+          tanglish: "Nalla",
+          meaning: "Good",
+        },
+        {
+          tamil: "பெரிய",
+          tanglish: "Periya",
+          meaning: "Big",
+        },
+        {
+          tamil: "சின்ன",
+          tanglish: "Chinna",
+          meaning: "Small",
+        },
+        {
+          tamil: "புது",
+          tanglish: "Puthu",
+          meaning: "New",
+        },
+        {
+          tamil: "பழைய",
+          tanglish: "Pazhaiya",
+          meaning: "Old",
+        },
+        {
+          tamil: "அழகான",
+          tanglish: "Azhagana",
+          meaning: "Beautiful",
+        },
+        {
+          tamil: "ஆம்",
+          tanglish: "Aam",
+          meaning: "Yes",
+        },
+        {
+          tamil: "இல்லை",
+          tanglish: "Illai",
+          meaning: "No",
+        },
+        {
+          tamil: "தண்ணீர்",
+          tanglish: "Thanneer",
+          meaning: "Water",
+        },
+        {
+          tamil: "உணவு",
+          tanglish: "Unavu",
+          meaning: "Food",
+        },
+        {
+          tamil: "வீடு",
+          tanglish: "Veedu",
+          meaning: "House",
+        },
+        {
+          tamil: "குடும்பம்",
+          tanglish: "Kudumbam",
+          meaning: "Family",
+        },
+        {
+          tamil: "நண்பர்",
+          tanglish: "Nanbar",
+          meaning: "Friend",
+        },
+        {
+          tamil: "பள்ளி",
+          tanglish: "Palli",
+          meaning: "School",
+        },
+        {
+          tamil: "ஆசிரியர்",
+          tanglish: "Aasiriyar",
+          meaning: "Teacher",
+        },
+        {
+          tamil: "புத்தகம்",
+          tanglish: "Puthagam",
+          meaning: "Book",
+        },
+        {
+          tamil: "பேனா",
+          tanglish: "Penna",
+          meaning: "Pen",
+        },
+        {
+          tamil: "கார்",
+          tanglish: "Kaar",
+          meaning: "Car",
+        },
+        {
+          tamil: "பேருந்து",
+          tanglish: "Perunthu",
+          meaning: "Bus",
+        },
+        {
+          tamil: "ரயில்",
+          tanglish: "Rayil",
+          meaning: "Train",
+        },
+        {
+          tamil: "சந்தை",
+          tanglish: "Sandhai",
+          meaning: "Market",
+        },
+        {
+          tamil: "கடை",
+          tanglish: "Kadai",
+          meaning: "Shop",
+        },
+        {
+          tamil: "பணம்",
+          tanglish: "Panam",
+          meaning: "Money",
+        },
+        {
+          tamil: "விலை",
+          tanglish: "Vilai",
+          meaning: "Price",
+        },
+        {
+          tamil: "மலிவு",
+          tanglish: "Malivu",
+          meaning: "Cheap",
+        },
+        {
+          tamil: "காதல்",
+          tanglish: "Kaadhal",
+          meaning: "Love",
+        },
+        {
+          tamil: "வெறுப்பு",
+          tanglish: "Veruppu",
+          meaning: "Hate",
+        },
+        {
+          tamil: "மகிழ்ச்சி",
+          tanglish: "Magizhchi",
+          meaning: "Happy",
+        },
+        {
+          tamil: "சோகம்",
+          tanglish: "Sogam",
+          meaning: "Sad",
+        },
+        {
+          tamil: "கோபம்",
+          tanglish: "Kobam",
+          meaning: "Angry",
+        },
+        {
+          tamil: "பயம்",
+          tanglish: "Bayam",
+          meaning: "Fear",
+        },
+        {
+          tamil: "அசிங்கமான",
+          tanglish: "Asingamana",
+          meaning: "Ugly",
+        },
+        {
+          tamil: "சிறிய",
+          tanglish: "Siriya",
+          meaning: "Small",
+        },
+        {
+          tamil: "சூடான",
+          tanglish: "Soodana",
+          meaning: "Hot",
+        },
+        {
+          tamil: "குளிர்ந்த",
+          tanglish: "Kulirntha",
+          meaning: "Cold",
+        },
+        {
+          tamil: "நாள்",
+          tanglish: "Naal",
+          meaning: "Day",
+        },
+        {
+          tamil: "இன்று",
+          tanglish: "Indru",
+          meaning: "Today",
+        },
+        {
+          tamil: "நாளை",
+          tanglish: "Naalai",
+          meaning: "Tomorrow",
+        },
+        {
+          tamil: "நேற்றுப்",
+          tanglish: "Netrup",
+          meaning: "Yesterday",
+        },
+        {
+          tamil: "அறிவு",
+          tanglish: "Arivu",
+          meaning: "Knowledge",
+        },
+        {
+          tamil: "ஞானம்",
+          tanglish: "Gnanam",
+          meaning: "Wisdom",
+        },
+        {
+          tamil: "சுதந்திரம்",
+          tanglish: "Sudandhiram",
+          meaning: "Freedom",
+        },
+        {
+          tamil: "நீதிமுறை",
+          tanglish: "Neethimurai",
+          meaning: "Justice",
+        },
+        {
+          tamil: "சமத்துவம்",
+          tanglish: "Samathuvam",
+          meaning: "Equality",
+        },
+        {
+          tamil: "பாரம்பரியம்",
+          tanglish: "Parampariyam",
+          meaning: "Tradition",
+        },
+        {
+          tamil: "புதுமை",
+          tanglish: "Pudhumai",
+          meaning: "Innovation",
+        },
+        {
+          tamil: "தொழில்நுட்பம்",
+          tanglish: "Thozhilnutpam",
+          meaning: "Technology",
+        },
+        {
+          tamil: "சுற்றுச்சூழல்",
+          tanglish: "Sutru Suzhal",
+          meaning: "Environment",
+        },
+        {
+          tamil: "நிலைத்தன்மை",
+          tanglish: "Nilai Thunmai",
+          meaning: "Sustainability",
+        },
+        {
+          tamil: "கண்",
+          tanglish: "Kan",
+          meaning: "Eye",
+        },
+        {
+          tamil: "காது",
+          tanglish: "Kaadhu",
+          meaning: "Ear",
+        },
+        {
+          tamil: "மூக்கு",
+          tanglish: "Mookku",
+          meaning: "Nose",
+        },
+        {
+          tamil: "வாய்",
+          tanglish: "Vaay",
+          meaning: "Mouth",
+        },
+        {
+          tamil: "கை",
+          tanglish: "Kai",
+          meaning: "Hand",
+        },
+        {
+          tamil: "கால்",
+          tanglish: "Kaal",
+          meaning: "Leg",
+        },
+        {
+          tamil: "தலை",
+          tanglish: "Thalai",
+          meaning: "Head",
+        },
+        {
+          tamil: "முகம்",
+          tanglish: "Mugam",
+          meaning: "Face",
+        },
+        {
+          tamil: "பல்",
+          tanglish: "Pal",
+          meaning: "Tooth",
+        },
+        {
+          tamil: "நாக்கு",
+          tanglish: "Naakku",
+          meaning: "Tongue",
+        },
+        {
+          tamil: "முடி",
+          tanglish: "Mudi",
+          meaning: "Hair",
+        },
+        {
+          tamil: "தோல்",
+          tanglish: "Thol",
+          meaning: "Skin",
+        },
+        {
+          tamil: "விரல்",
+          tanglish: "Viral",
+          meaning: "Finger",
+        },
+        {
+          tamil: "வயிறு",
+          tanglish: "Vayiru",
+          meaning: "Stomach",
+        },
+        {
+          tamil: "கழுத்து",
+          tanglish: "Kazhuthu",
+          meaning: "Neck",
+        },
+        {
+          tamil: "தோள்",
+          tanglish: "Thol",
+          meaning: "Shoulder",
+        },
+        {
+          tamil: "மார்பு",
+          tanglish: "Maarbu",
+          meaning: "Chest",
+        },
+        {
+          tamil: "முதுகு",
+          tanglish: "Mudhugu",
+          meaning: "Back",
+        },
+        {
+          tamil: "எலும்பு",
+          tanglish: "Elumbu",
+          meaning: "Bone",
+        },
+        {
+          tamil: "ரத்தம்",
+          tanglish: "Raththam",
+          meaning: "Blood",
+        },
+        {
+          tamil: "தண்ணி",
+          tanglish: "Thanni",
+          meaning: "Water",
+        },
+        {
+          tamil: "சாப்பாடு",
+          tanglish: "Saapaadu",
+          meaning: "Food",
+        },
+        {
+          tamil: "அரிசி",
+          tanglish: "Arisi",
+          meaning: "Rice",
+        },
+        {
+          tamil: "பால்",
+          tanglish: "Paal",
+          meaning: "Milk",
+        },
+        {
+          tamil: "பழம்",
+          tanglish: "Pazham",
+          meaning: "Fruit",
+        },
+        {
+          tamil: "காய்",
+          tanglish: "Kaai",
+          meaning: "Vegetable",
+        },
+        {
+          tamil: "உப்பு",
+          tanglish: "Uppu",
+          meaning: "Salt",
+        },
+        {
+          tamil: "சர்க்கரை",
+          tanglish: "Sarkkarai",
+          meaning: "Sugar",
+        },
+        {
+          tamil: "எண்ணெய்",
+          tanglish: "Ennai",
+          meaning: "Oil",
+        },
+        {
+          tamil: "முட்டை",
+          tanglish: "Muttai",
+          meaning: "Egg",
+        },
+        {
+          tamil: "இறைச்சி",
+          tanglish: "Iraichi",
+          meaning: "Meat",
+        },
+        {
+          tamil: "மீன்",
+          tanglish: "Meen",
+          meaning: "Fish",
+        },
+        {
+          tamil: "தேநீர்",
+          tanglish: "Thaeneer",
+          meaning: "Tea",
+        },
+        {
+          tamil: "தயிர்",
+          tanglish: "Thayir",
+          meaning: "Curd",
+        },
+        {
+          tamil: "நெய்",
+          tanglish: "Nei",
+          meaning: "Ghee",
+        },
+        {
+          tamil: "தேன்",
+          tanglish: "Thaen",
+          meaning: "Honey",
+        },
+        {
+          tamil: "மிளகாய்",
+          tanglish: "Milagaai",
+          meaning: "Chilli",
+        },
+        {
+          tamil: "ரொட்டி",
+          tanglish: "Rotti",
+          meaning: "Bread",
+        },
+        {
+          tamil: "ரசம்",
+          tanglish: "Rasam",
+          meaning: "Soup",
+        },
+        {
+          tamil: "இனிப்பு",
+          tanglish: "Iniupu",
+          meaning: "Sweet",
+        },
+        {
+          tamil: "கதவு",
+          tanglish: "Kadhavu",
+          meaning: "Door",
+        },
+        {
+          tamil: "ஜன்னல்",
+          tanglish: "Jannal",
+          meaning: "Window",
+        },
+        {
+          tamil: "சாவி",
+          tanglish: "Saavi",
+          meaning: "Key",
+        },
+        {
+          tamil: "பூட்டு",
+          tanglish: "Poottu",
+          meaning: "Lock",
+        },
+        {
+          tamil: "நாற்காலி",
+          tanglish: "Naarkaali",
+          meaning: "Chair",
+        },
+        {
+          tamil: "மேசை",
+          tanglish: "Mesai",
+          meaning: "Table",
+        },
+        {
+          tamil: "படுக்கை",
+          tanglish: "Padukkai",
+          meaning: "Bed",
+        },
+        {
+          tamil: "விளக்கு",
+          tanglish: "Vilakku",
+          meaning: "Light",
+        },
+        {
+          tamil: "விசிறி",
+          tanglish: "Visiri",
+          meaning: "Fan",
+        },
+        {
+          tamil: "பேனா",
+          tanglish: "Pena",
+          meaning: "Pen",
+        },
+        {
+          tamil: "தாள்",
+          tanglish: "Thaal",
+          meaning: "Paper",
+        },
+        {
+          tamil: "துணி",
+          tanglish: "Thuni",
+          meaning: "Cloth",
+        },
+        {
+          tamil: "பை",
+          tanglish: "Pai",
+          meaning: "Bag",
+        },
+        {
+          tamil: "பெட்டி",
+          tanglish: "Petti",
+          meaning: "Box",
+        },
+        {
+          tamil: "தொலைபேசி",
+          tanglish: "Tholai-pesi",
+          meaning: "Phone",
+        },
+        {
+          tamil: "மணிகாட்டி",
+          tanglish: "Mani-kaatti",
+          meaning: "Watch",
+        },
+        {
+          tamil: "கண்ணாடி",
+          tanglish: "Kannaadi",
+          meaning: "Mirror",
+        },
+        {
+          tamil: "தூங்கு",
+          tanglish: "Thoongu",
+          meaning: "Sleep",
+        },
+        {
+          tamil: "ஓடு",
+          tanglish: "Odu",
+          meaning: "Run",
+        },
+        {
+          tamil: "உட்கார்",
+          tanglish: "Utkaar",
+          meaning: "Sit",
+        },
+        {
+          tamil: "நில்லு",
+          tanglish: "Nillu",
+          meaning: "Stand",
+        },
+        {
+          tamil: "நடை",
+          tanglish: "Nadai",
+          meaning: "Walk",
+        },
+        {
+          tamil: "பாடு",
+          tanglish: "Paadu",
+          meaning: "Sing",
+        },
+        {
+          tamil: "ஆடு",
+          tanglish: "Aadu",
+          meaning: "Dance",
+        },
+        {
+          tamil: "கொடு",
+          tanglish: "Kodu",
+          meaning: "Give",
+        },
+        {
+          tamil: "எடு",
+          tanglish: "Edu",
+          meaning: "Take",
+        },
+        {
+          tamil: "கொண்டுவா",
+          tanglish: "Konduva",
+          meaning: "Bring",
+        },
+        {
+          tamil: "அனுப்பு",
+          tanglish: "Anuppu",
+          meaning: "Send",
+        },
+        {
+          tamil: "திற",
+          tanglish: "Thira",
+          meaning: "Open",
+        },
+        {
+          tamil: "மூடு",
+          tanglish: "Moodu",
+          meaning: "Close",
+        },
+        {
+          tamil: "எழுது",
+          tanglish: "Ezhudhu",
+          meaning: "Write",
+        },
+        {
+          tamil: "படி",
+          tanglish: "Padi",
+          meaning: "Read",
+        },
+        {
+          tamil: "விளையாடு",
+          tanglish: "Vilaiyaadu",
+          meaning: "Play",
+        },
+        {
+          tamil: "சொல்லு",
+          tanglish: "Sollu",
+          meaning: "Tell",
+        },
+        {
+          tamil: "செய்",
+          tanglish: "Sei",
+          meaning: "Do",
+        },
+        {
+          tamil: "வாங்கு",
+          tanglish: "Vaangu",
+          meaning: "Buy",
+        },
+        {
+          tamil: "நகரம்",
+          tanglish: "Nagaram",
+          meaning: "City",
+        },
+        {
+          tamil: "கிராமம்",
+          tanglish: "Graamam",
+          meaning: "Village",
+        },
+        {
+          tamil: "சாலை",
+          tanglish: "Saalai",
+          meaning: "Road",
+        },
+        {
+          tamil: "மரம்",
+          tanglish: "Maram",
+          meaning: "Tree",
+        },
+        {
+          tamil: "செடி",
+          tanglish: "Sedi",
+          meaning: "Plant",
+        },
+        {
+          tamil: "பூ",
+          tanglish: "Poo",
+          meaning: "Flower",
+        },
+        {
+          tamil: "நிலம்",
+          tanglish: "Nilam",
+          meaning: "Land",
+        },
+        {
+          tamil: "வானம்",
+          tanglish: "Vaanam",
+          meaning: "Sky",
+        },
+        {
+          tamil: "நட்சத்திரம்",
+          tanglish: "Natchathiram",
+          meaning: "Star",
+        },
+        {
+          tamil: "நிலா",
+          tanglish: "Nila",
+          meaning: "Moon",
+        },
+        {
+          tamil: "விலங்கு",
+          tanglish: "Vilangu",
+          meaning: "Animal",
+        },
+        {
+          tamil: "பறவை",
+          tanglish: "Paravai",
+          meaning: "Bird",
+        },
+        {
+          tamil: "நாய்",
+          tanglish: "Naai",
+          meaning: "Dog",
+        },
+        {
+          tamil: "பூனை",
+          tanglish: "Poonai",
+          meaning: "Cat",
+        },
+        {
+          tamil: "மாடு",
+          tanglish: "Maadu",
+          meaning: "Cow",
+        },
+        {
+          tamil: "வழி",
+          tanglish: "Vazhi",
+          meaning: "Path/Way",
+        },
+        {
+          tamil: "மலை",
+          tanglish: "Malai",
+          meaning: "Mountain",
+        },
+        {
+          tamil: "கருப்பு",
+          tanglish: "Karuppu",
+          meaning: "Black",
+        },
+        {
+          tamil: "வெள்ளை",
+          tanglish: "Vellai",
+          meaning: "White",
+        },
+        {
+          tamil: "சிவப்பு",
+          tanglish: "Sivappu",
+          meaning: "Red",
+        },
+        {
+          tamil: "பச்சை",
+          tanglish: "Pachai",
+          meaning: "Green",
+        },
+        {
+          tamil: "நீலம்",
+          tanglish: "Neelam",
+          meaning: "Blue",
+        },
+        {
+          tamil: "மஞ்சள்",
+          tanglish: "Manjal",
+          meaning: "Yellow",
+        },
+        {
+          tamil: "தங்கம்",
+          tanglish: "Thangam",
+          meaning: "Gold",
+        },
+        {
+          tamil: "வெள்ளி",
+          tanglish: "Velli",
+          meaning: "Silver",
+        },
+        {
+          tamil: "கிழக்கு",
+          tanglish: "Kizhakku",
+          meaning: "East",
+        },
+        {
+          tamil: "மேற்கு",
+          tanglish: "Maerku",
+          meaning: "West",
+        },
+        {
+          tamil: "வடக்கு",
+          tanglish: "Vadakku",
+          meaning: "North",
+        },
+        {
+          tamil: "தெற்கு",
+          tanglish: "Therku",
+          meaning: "South",
+        },
+        {
+          tamil: "இடது",
+          tanglish: "Idathu",
+          meaning: "Left",
+        },
+        {
+          tamil: "வலது",
+          tanglish: "Valathu",
+          meaning: "Right",
+        },
+        {
+          tamil: "மேலே",
+          tanglish: "Maelae",
+          meaning: "Up",
+        },
+        {
+          tamil: "கீழே",
+          tanglish: "Keezhae",
+          meaning: "Down",
+        },
+        {
+          tamil: "உள்ளே",
+          tanglish: "Ullae",
+          meaning: "Inside",
+        },
+        {
+          tamil: "வெளியே",
+          tanglish: "Veliyae",
+          meaning: "Outside",
+        },
+        {
+          tamil: "முன்னே",
+          tanglish: "Munnae",
+          meaning: "Front",
+        },
+        {
+          tamil: "பின்னே",
+          tanglish: "Pinnae",
+          meaning: "Back",
+        },
+        {
+          tamil: "பக்கம்",
+          tanglish: "Pakkam",
+          meaning: "Near",
+        },
+        {
+          tamil: "தூரம்",
+          tanglish: "Thooram",
+          meaning: "Far",
+        },
+        {
+          tamil: "நடு",
+          tanglish: "Nadu",
+          meaning: "Middle",
+        },
+        {
+          tamil: "அன்பு",
+          tanglish: "Anbu",
+          meaning: "Love",
+        },
+        {
+          tamil: "அமைதி",
+          tanglish: "Amaidhi",
+          meaning: "Peace",
+        },
+        {
+          tamil: "பசி",
+          tanglish: "Pasi",
+          meaning: "Hunger",
+        },
+        {
+          tamil: "தாகம்",
+          tanglish: "Thaagam",
+          meaning: "Thirst",
+        },
+        {
+          tamil: "வலி",
+          tanglish: "Vali",
+          meaning: "Pain",
+        },
+        {
+          tamil: "வெட்கம்",
+          tanglish: "Vetkam",
+          meaning: "Shame",
+        },
+        {
+          tamil: "சிரிப்பு",
+          tanglish: "Sirippu",
+          meaning: "Laughter",
+        },
+        {
+          tamil: "அழுகை",
+          tanglish: "Azhugai",
+          meaning: "Crying",
+        },
+        {
+          tamil: "தூக்கம்",
+          tanglish: "Thookkam",
+          meaning: "Sleepy",
+        },
+        {
+          tamil: "களைப்பு",
+          tanglish: "Thalaipu",
+          meaning: "Tired",
+        },
+        {
+          tamil: "துணிவு",
+          tanglish: "Thunivua",
+          meaning: "Brave",
+        },
+        {
+          tamil: "தட்டு",
+          tanglish: "Thattu",
+          meaning: "Plate",
+        },
+        {
+          tamil: "டம்ளர்",
+          tanglish: "Tumbler",
+          meaning: "Tumbler",
+        },
+        {
+          tamil: "கரண்டி",
+          tanglish: "Karandi",
+          meaning: "Spoon",
+        },
+        {
+          tamil: "கத்தி",
+          tanglish: "Kathi",
+          meaning: "Knife",
+        },
+        {
+          tamil: "பானை",
+          tanglish: "Paanai",
+          meaning: "Pot",
+        },
+        {
+          tamil: "வாளி",
+          tanglish: "Vaali",
+          meaning: "Bucket",
+        },
+        {
+          tamil: "விளக்குமாறு",
+          tanglish: "Vilakumaaru",
+          meaning: "Broom",
+        },
+        {
+          tamil: "சோப்பு",
+          tanglish: "Soap",
+          meaning: "Soap",
+        },
+        {
+          tamil: "சீப்பு",
+          tanglish: "Seepu",
+          meaning: "Comb",
+        },
+        {
+          tamil: "ஊசி",
+          tanglish: "Oosi",
+          meaning: "Needle",
+        },
+        {
+          tamil: "நூல்",
+          tanglish: "Nool",
+          meaning: "Thread",
+        },
+        {
+          tamil: "தலையணை",
+          tanglish: "Thalayaanai",
+          meaning: "Pillow",
+        },
+        {
+          tamil: "பாய்",
+          tanglish: "Paai",
+          meaning: "Mat",
+        },
+        {
+          tamil: "கயிறு",
+          tanglish: "Kayiru",
+          meaning: "Rope",
+        },
+        {
+          tamil: "வேலை",
+          tanglish: "Velai",
+          meaning: "Work",
+        },
+        {
+          tamil: "ஓய்வு",
+          tanglish: "Oivu",
+          meaning: "Rest",
+        },
+        {
+          tamil: "உதவி",
+          tanglish: "Udhavi",
+          meaning: "Help",
+        },
+        {
+          tamil: "பரிசு",
+          tanglish: "Parisu",
+          meaning: "Gift",
+        },
+        {
+          tamil: "பாடம்",
+          tanglish: "Paadam",
+          meaning: "Lesson/Subject",
+        },
+        {
+          tamil: "செய்திகள்",
+          tanglish: "Seidhaigal",
+          meaning: "News",
+        },
+        {
+          tamil: "கடிதம்",
+          tanglish: "Kadidham",
+          meaning: "Letter",
+        },
+        {
+          tamil: "வார்த்தை",
+          tanglish: "Vaarthai",
+          meaning: "Word",
+        },
+        {
+          tamil: "பெயர்",
+          tanglish: "Peyar",
+          meaning: "Name",
+        },
+        {
+          tamil: "வயது",
+          tanglish: "Vayathu",
+          meaning: "Age",
+        },
+        {
+          tamil: "சத்தம்",
+          tanglish: "Satham",
+          meaning: "Sound/Loud",
+        },
+        {
+          tamil: "வெளிச்சம்",
+          tanglish: "Velicham",
+          meaning: "Light",
+        },
+        {
+          tamil: "இருட்டு",
+          tanglish: "Iruttu",
+          meaning: "Dark",
+        },
+        {
+          tamil: "ரகசியம்",
+          tanglish: "Ragasiyam",
+          meaning: "Secret",
+        },
+        {
+          tamil: "தேடு",
+          tanglish: "Thaedu",
+          meaning: "Search",
+        },
+        {
+          tamil: "கண்டுபிடி",
+          tanglish: "Kandupid",
+          meaning: "Find",
+        },
+        {
+          tamil: "யோசி",
+          tanglish: "Yosi",
+          meaning: "Think",
+        },
+        {
+          tamil: "மற",
+          tanglish: "Mara",
+          meaning: "Forget",
+        },
+        {
+          tamil: "காத்திரு",
+          tanglish: "Kaathiru",
+          meaning: "Wait",
+        },
+        {
+          tamil: "ஜெயி",
+          tanglish: "Jeyi",
+          meaning: "Win",
+        },
+        {
+          tamil: "தோல்",
+          tanglish: "Thol",
+          meaning: "Lose",
+        },
+        {
+          tamil: "குதி",
+          tanglish: "Kidhi",
+          meaning: "Jump",
+        },
+        {
+          tamil: "நீந்து",
+          tanglish: "Neendhu",
+          meaning: "Swim",
+        },
+        {
+          tamil: "ஏறு",
+          tanglish: "Aeru",
+          meaning: "Climb",
+        },
+        {
+          tamil: "இறங்கு",
+          tanglish: "Irangu",
+          meaning: "Lower",
+        },
+        {
+          tamil: "தள்ளு",
+          tanglish: "Thallu",
+          meaning: "Push",
+        },
+        {
+          tamil: "இழு",
+          tanglish: "Izhuv",
+          meaning: "Pull",
+        },
+        {
+          tamil: "உடை",
+          tanglish: "Udai",
+          meaning: "Break",
+        },
+        {
+          tamil: "தை",
+          tanglish: "Thai",
+          meaning: "Stitch",
+        },
+        {
+          tamil: "கழுவு",
+          tanglish: "Kazhuvu",
+          meaning: "Wash",
+        },
+        {
+          tamil: "சுத்தம்",
+          tanglish: "Sutham",
+          meaning: "Clean",
+        },
+        {
+          tamil: "பற",
+          tanglish: "Para",
+          meaning: "Fly",
+        },
+        {
+          tamil: "நிறுத்து",
+          tanglish: "Niruthu",
+          meaning: "Stop",
+        },
+        {
+          tamil: "தொடங்கு",
+          tanglish: "Thodangu",
+          meaning: "Start",
+        },
+        {
+          tamil: "முடிக்க",
+          tanglish: "Mudikka",
+          meaning: "Finish",
+        },
+        {
+          tamil: "வாழு",
+          tanglish: "Vaazhu",
+          meaning: "Live",
+        },
+        {
+          tamil: "இற",
+          tanglish: "Ira",
+          meaning: "Die",
+        },
+        {
+          tamil: "கொல்லு",
+          tanglish: "Kollu",
+          meaning: "Kill",
+        },
+        {
+          tamil: "காப்பாற்று",
+          tanglish: "Kaapaatru",
+          meaning: "Save",
+        },
+        {
+          tamil: "நொடி",
+          tanglish: "Nodi",
+          meaning: "Second",
+        },
+        {
+          tamil: "நிமிடம்",
+          tanglish: "Nimidam",
+          meaning: "Minute",
+        },
+        {
+          tamil: "மணி",
+          tanglish: "Mani",
+          meaning: "Hour/Bell",
+        },
+        {
+          tamil: "வாரம்",
+          tanglish: "Vaaram",
+          meaning: "Week",
+        },
+        {
+          tamil: "மாதம்",
+          tanglish: "Maadham",
+          meaning: "Month",
+        },
+        {
+          tamil: "ஆண்டு",
+          tanglish: "Aandu",
+          meaning: "Year",
+        },
+        {
+          tamil: "தினமும்",
+          tanglish: "Dhinamum",
+          meaning: "Daily",
+        },
+        {
+          tamil: "எப்பொழுதும்",
+          tanglish: "Eppozhuthum",
+          meaning: "Always",
+        },
+        {
+          tamil: "சில நேரம்",
+          tanglish: "Sila neram",
+          meaning: "Sometimes",
+        },
+        {
+          tamil: "சீக்கிரம்",
+          tanglish: "Seekiram",
+          meaning: "Early",
+        },
+        {
+          tamil: "தாமதம்",
+          tanglish: "Thamadham",
+          meaning: "Late",
+        },
+        {
+          tamil: "தேதி",
+          tanglish: "Thaedhi",
+          meaning: "Date",
+        },
+        {
+          tamil: "காலம்",
+          tanglish: "Kaalam",
+          meaning: "Time",
+        },
+        {
+          tamil: "எல்லாம்",
+          tanglish: "Ellaam",
+          meaning: "Everything",
+        },
+        {
+          tamil: "ஒன்றுமில்லை",
+          tanglish: "Ondrum illai",
+          meaning: "Nothing",
+        },
+        {
+          tamil: "கொஞ்சம்",
+          tanglish: "Konjam",
+          meaning: "Some",
+        },
+        {
+          tamil: "பல்வேறு",
+          tanglish: "Palaveru",
+          meaning: "Many",
+        },
+        {
+          tamil: "அதிகம்",
+          tanglish: "Adhigam",
+          meaning: "More",
+        },
+        {
+          tamil: "குறைவு",
+          tanglish: "Kuraivu",
+          meaning: "Less",
+        },
+        {
+          tamil: "முழு",
+          tanglish: "Muzhu",
+          meaning: "Full",
+        },
+        {
+          tamil: "அரை",
+          tanglish: "Araadhi",
+          meaning: "Half",
+        },
+        {
+          tamil: "எடை",
+          tanglish: "Edai",
+          meaning: "Weight",
+        },
+        {
+          tamil: "கனமான",
+          tanglish: "Ganamaana",
+          meaning: "Heavy",
+        },
+        {
+          tamil: "லேசான",
+          tanglish: "Lesaana",
+          meaning: "Light",
+        },
+        {
+          tamil: "நீள",
+          tanglish: "Neela",
+          meaning: "Long",
+        },
+        {
+          tamil: "குட்டை",
+          tanglish: "Kuttai",
+          meaning: "Short",
+        },
+        {
+          tamil: "தடி",
+          tanglish: "Thadi",
+          meaning: "Thick",
+        },
+        {
+          tamil: "மெல்லிய",
+          tanglish: "Mellia",
+          meaning: "Thin",
+        },
+        {
+          tamil: "மாணவன்",
+          tanglish: "Maanavan",
+          meaning: "Student",
+        },
+        {
+          tamil: "தேர்வு",
+          tanglish: "Thaervu",
+          meaning: "Exam",
+        },
+        {
+          tamil: "மை",
+          tanglish: "Mai",
+          meaning: "Ink",
+        },
+        {
+          tamil: "வரைபடம்",
+          tanglish: "Varaipadam",
+          meaning: "Map",
+        },
+        {
+          tamil: "விதி",
+          tanglish: "Vidhi",
+          meaning: "Rule",
+        },
+        {
+          tamil: "கூட்டம்",
+          tanglish: "Koottam",
+          meaning: "Meeting",
+        },
+        {
+          tamil: "சம்பளம்",
+          tanglish: "Sambalam",
+          meaning: "Salary",
+        },
+        {
+          tamil: "விடுமுறை",
+          tanglish: "Vidumurai",
+          meaning: "Holiday",
+        },
+        {
+          tamil: "கையெழுத்து",
+          tanglish: "Kaiyoppam",
+          meaning: "Sign",
+        },
+        {
+          tamil: "பதில்",
+          tanglish: "Badhil",
+          meaning: "Answer",
+        },
+        {
+          tamil: "கேள்வி",
+          tanglish: "Kaelvi",
+          meaning: "Question",
+        },
+        {
+          tamil: "உண்மை",
+          tanglish: "Unmai",
+          meaning: "True",
+        },
+        {
+          tamil: "பொய்",
+          tanglish: "Poi",
+          meaning: "False",
+        },
+        {
+          tamil: "சரி",
+          tanglish: "Sari",
+          meaning: "Right/Correct",
+        },
+        {
+          tamil: "தப்பு",
+          tanglish: "Thappu",
+          meaning: "Wrong",
+        },
+        {
+          tamil: "சுலபம்",
+          tanglish: "Sulabam",
+          meaning: "Easy",
+        },
+        {
+          tamil: "கடினம்",
+          tanglish: "Kadhanam",
+          meaning: "Hard",
+        },
+        {
+          tamil: "கசப்பு",
+          tanglish: "Kasappu",
+          meaning: "Bitter",
+        },
+        {
+          tamil: "புளிப்பு",
+          tanglish: "Pulippu",
+          meaning: "Sour",
+        },
+        {
+          tamil: "காரம்",
+          tanglish: "Kaaram",
+          meaning: "Spicy",
+        },
+        {
+          tamil: "வேகம்",
+          tanglish: "Vaegam",
+          meaning: "Fast",
+        },
+        {
+          tamil: "மெது",
+          tanglish: "Medhu",
+          meaning: "Slow",
+        },
+        {
+          tamil: "அழுக்கு",
+          tanglish: "Azhukku",
+          meaning: "Dirty",
+        },
+        {
+          tamil: "வலுவான",
+          tanglish: "Valuvana",
+          meaning: "Strong",
+        },
+        {
+          tamil: "பலமில்லை",
+          tanglish: "Balamillai",
+          meaning: "Weak",
+        },
+        {
+          tamil: "பணக்கார",
+          tanglish: "Panakkaara",
+          meaning: "Rich",
+        },
+        {
+          tamil: "ஏழை",
+          tanglish: "Aerai",
+          meaning: "Poor",
+        },
+        {
+          tamil: "உலகம்",
+          tanglish: "Ulagam",
+          meaning: "World",
+        },
+        {
+          tamil: "பூமி",
+          tanglish: "Bhoomi",
+          meaning: "Earth",
+        },
+        {
+          tamil: "கல்",
+          tanglish: "Kal",
+          meaning: "Stone",
+        },
+        {
+          tamil: "மணல்",
+          tanglish: "Manal",
+          meaning: "Sand",
+        },
+        {
+          tamil: "சேறு",
+          tanglish: "Saeru",
+          meaning: "Mud",
+        },
+        {
+          tamil: "காடு",
+          tanglish: "Kaadu",
+          meaning: "Forest",
+        },
+        {
+          tamil: "இலை",
+          tanglish: "Ilai",
+          meaning: "Leaf",
+        },
+        {
+          tamil: "விதை",
+          tanglish: "Vidhai",
+          meaning: "Seed",
+        },
+        {
+          tamil: "வேர்",
+          tanglish: "Vaer",
+          meaning: "Root",
+        },
+        {
+          tamil: "அலை",
+          tanglish: "Alai",
+          meaning: "Wave",
+        },
+        {
+          tamil: "கடல்",
+          tanglish: "Kadal",
+          meaning: "Sea",
+        },
+        {
+          tamil: "கரை",
+          tanglish: "Karai",
+          meaning: "Shore",
+        },
+        {
+          tamil: "பனி",
+          tanglish: "Pani",
+          meaning: "Ice",
+        },
+        {
+          tamil: "புகை",
+          tanglish: "Pugai",
+          meaning: "Smoke",
+        },
+        {
+          tamil: "நெருப்பு",
+          tanglish: "Neruppu",
+          meaning: "Fire",
+        },
+        {
+          tamil: "சாம்பல்",
+          tanglish: "Saambal",
+          meaning: "Ash",
+        },
+        {
+          tamil: "செம்பு",
+          tanglish: "Sembu",
+          meaning: "Copper",
+        },
+        {
+          tamil: "இரும்பு",
+          tanglish: "Irumbu",
+          meaning: "Iron",
+        },
+        {
+          tamil: "வெளி",
+          tanglish: "Veli",
+          meaning: "Space",
+        },
+        {
+          tamil: "சிமிட்டு",
+          tanglish: "Simittu",
+          meaning: "Blink",
+        },
+        {
+          tamil: "புன்னகை",
+          tanglish: "Pun-nagai",
+          meaning: "Smile",
+        },
+        {
+          tamil: "மெல்லு",
+          tanglish: "Mellu",
+          meaning: "Chew",
+        },
+        {
+          tamil: "விழுங்கு",
+          tanglish: "Vizhungu",
+          meaning: "Swallow",
+        },
+        {
+          tamil: "சுவாசி",
+          tanglish: "Suvaasi",
+          meaning: "Breathe",
+        },
+        {
+          tamil: "தொடு",
+          tanglish: "Thodu",
+          meaning: "Touch",
+        },
+        {
+          tamil: "பிடி",
+          tanglish: "Pidi",
+          meaning: "Hold",
+        },
+        {
+          tamil: "அடி",
+          tanglish: "Adi",
+          meaning: "Beat",
+        },
+        {
+          tamil: "உதை",
+          tanglish: "Udhai",
+          meaning: "Kick",
+        },
+        {
+          tamil: "முத்தம்",
+          tanglish: "Muththam",
+          meaning: "Kiss",
+        },
+        {
+          tamil: "மருத்துவர்",
+          tanglish: "Maruthuvar",
+          meaning: "Doctor",
+        },
+        {
+          tamil: "தொழிலாளி",
+          tanglish: "Thozhilaali",
+          meaning: "Worker",
+        },
+        {
+          tamil: "தலைவர்",
+          tanglish: "Thalaivar",
+          meaning: "Leader",
+        },
+        {
+          tamil: "நண்பன்",
+          tanglish: "Nanban",
+          meaning: "Friend",
+        },
+        {
+          tamil: "எதிரி",
+          tanglish: "Edhiri",
+          meaning: "Enemy",
+        },
+        {
+          tamil: "விருந்தினர்",
+          tanglish: "Virundhinar",
+          meaning: "Guest",
+        },
+        {
+          tamil: "முதலாளி",
+          tanglish: "Mudhalaali",
+          meaning: "Owner",
+        },
+        {
+          tamil: "அரசன்",
+          tanglish: "Arasan",
+          meaning: "King",
+        },
+        {
+          tamil: "அரசி",
+          tanglish: "Arasi",
+          meaning: "Queen",
+        },
+        {
+          tamil: "கவிஞர்",
+          tanglish: "Kavingnar",
+          meaning: "Poet",
+        },
+        {
+          tamil: "உழவர்",
+          tanglish: "Uzhavar",
+          meaning: "Farmer",
+        },
+        {
+          tamil: "காவல்",
+          tanglish: "Kaaval",
+          meaning: "Police",
+        },
+        {
+          tamil: "ஓட்டுநர்",
+          tanglish: "Ottunar",
+          meaning: "Driver",
+        },
+        {
+          tamil: "சமையல்",
+          tanglish: "Samaiyal",
+          meaning: "Cook/Cooking",
+        },
+        {
+          tamil: "நீதிபதி",
+          tanglish: "Needhipathi",
+          meaning: "Judge",
+        },
+        {
+          tamil: "யானை",
+          tanglish: "Yaanai",
+          meaning: "Elephant",
+        },
+        {
+          tamil: "புலி",
+          tanglish: "Puli",
+          meaning: "Tiger",
+        },
+        {
+          tamil: "சிங்கம்",
+          tanglish: "Singam",
+          meaning: "Lion",
+        },
+        {
+          tamil: "மான்",
+          tanglish: "Maan",
+          meaning: "Deer",
+        },
+        {
+          tamil: "குதிரை",
+          tanglish: "Kudhirai",
+          meaning: "Horse",
+        },
+        {
+          tamil: "குரங்கு",
+          tanglish: "Kurangu",
+          meaning: "Monkey",
+        },
+        {
+          tamil: "பாம்பு",
+          tanglish: "Paambu",
+          meaning: "Snake",
+        },
+        {
+          tamil: "முயல்",
+          tanglish: "Muyal",
+          meaning: "Rabbit",
+        },
+        {
+          tamil: "எலி",
+          tanglish: "Eli",
+          meaning: "Mouse",
+        },
+        {
+          tamil: "கரடி",
+          tanglish: "Karadi",
+          meaning: "Bear",
+        },
+        {
+          tamil: "காகம்",
+          tanglish: "Kaagam",
+          meaning: "Crow",
+        },
+        {
+          tamil: "கிளி",
+          tanglish: "Kili",
+          meaning: "Parrot",
+        },
+        {
+          tamil: "மயில்",
+          tanglish: "Mayil",
+          meaning: "Peacock",
+        },
+        {
+          tamil: "வாத்து",
+          tanglish: "Vaathu",
+          meaning: "Duck",
+        },
+        {
+          tamil: "கோழி",
+          tanglish: "Kozhi",
+          meaning: "Hen",
+        },
+        {
+          tamil: "சிலந்தி",
+          tanglish: "Siledai",
+          meaning: "Spider",
+        },
+        {
+          tamil: "ஈ",
+          tanglish: "Ee",
+          meaning: "Fly",
+        },
+        {
+          tamil: "எறும்பு",
+          tanglish: "Erumbu",
+          meaning: "Ant",
+        },
+        {
+          tamil: "தேனி",
+          tanglish: "Thaeni",
+          meaning: "Bee",
+        },
+        {
+          tamil: "கனவு",
+          tanglish: "Kanavu",
+          meaning: "Dream",
+        },
+        {
+          tamil: "எண்ணம்",
+          tanglish: "Ennam",
+          meaning: "Thought",
+        },
+        {
+          tamil: "வாழ்க்கை",
+          tanglish: "Vaazhkai",
+          meaning: "Life",
+        },
+        {
+          tamil: "இறப்பு",
+          tanglish: "Iravu",
+          meaning: "Death",
+        },
+        {
+          tamil: "வெற்றி",
+          tanglish: "Vetri",
+          meaning: "Victory",
+        },
+        {
+          tamil: "தோல்வி",
+          tanglish: "Tholvi",
+          meaning: "Failure",
+        },
+        {
+          tamil: "தண்டனை",
+          tanglish: "Thandanai",
+          meaning: "Punishment",
+        },
+        {
+          tamil: "நீதி",
+          tanglish: "Needhi",
+          meaning: "Justice",
+        },
+        {
+          tamil: "பழக்கம்",
+          tanglish: "Pazhakkam",
+          meaning: "Habit",
+        },
+        {
+          tamil: "பலம்",
+          tanglish: "Balam",
+          meaning: "Strength",
+        },
+        {
+          tamil: "சுத்தி",
+          tanglish: "Suththi",
+          meaning: "Hammer",
+        },
+        {
+          tamil: "கோடாரி",
+          tanglish: "Kodaari",
+          meaning: "Axe",
+        },
+        {
+          tamil: "வாள்",
+          tanglish: "Vaal",
+          meaning: "Saw",
+        },
+        {
+          tamil: "இயந்திரம்",
+          tanglish: "Iyandhiram",
+          meaning: "Machine",
+        },
+        {
+          tamil: "கணினி",
+          tanglish: "Kanini",
+          meaning: "Computer",
+        },
+        {
+          tamil: "மின்சாரம்",
+          tanglish: "Minsaaram",
+          meaning: "Electricity",
+        },
+        {
+          tamil: "வண்டி",
+          tanglish: "Vandi",
+          meaning: "Vehicle",
+        },
+        {
+          tamil: "படக",
+          tanglish: "Padagu",
+          meaning: "Boat",
+        },
+        {
+          tamil: "கப்பல்",
+          tanglish: "Kappal",
+          meaning: "Ship",
+        },
+        {
+          tamil: "பாாலம்",
+          tanglish: "Paalam",
+          meaning: "Bridge",
+        },
+        {
+          tamil: "மற்றும்",
+          tanglish: "Matrum",
+          meaning: "And",
+        },
+        {
+          tamil: "அல்லது",
+          tanglish: "Allathu",
+          meaning: "Or",
+        },
+        {
+          tamil: "ஆனால்",
+          tanglish: "Aanaal",
+          meaning: "But",
+        },
+        {
+          tamil: "என்றால்",
+          tanglish: "Enraal",
+          meaning: "If",
+        },
+        {
+          tamil: "ஏனென்றால்",
+          tanglish: "Aen-enraal",
+          meaning: "Because",
+        },
+        {
+          tamil: "மட்டும்",
+          tanglish: "Mattum",
+          meaning: "Only",
+        },
+        {
+          tamil: "மறுபடி",
+          tanglish: "Marubadi",
+          meaning: "Again",
+        },
+        {
+          tamil: "அப்போ",
+          tanglish: "Appo",
+          meaning: "Then",
+        },
+        {
+          tamil: "ஏன்",
+          tanglish: "Aen",
+          meaning: "Why",
+        },
+        {
+          tamil: "எங்கே",
+          tanglish: "Engae",
+          meaning: "Where",
+        },
+        {
+          tamil: "எப்பொழுது",
+          tanglish: "Eppozhudhu",
+          meaning: "When",
+        },
+        {
+          tamil: "யார்",
+          tanglish: "Yaar",
+          meaning: "Who",
+        },
+        {
+          tamil: "எது",
+          tanglish: "Edhu",
+          meaning: "Which",
+        },
+        {
+          tamil: "வட்டம்",
+          tanglish: "Vattam",
+          meaning: "Round",
+        },
+        {
+          tamil: "சதுரம்",
+          tanglish: "Sathuram",
+          meaning: "Square",
+        },
+        {
+          tamil: "புள்ளி",
+          tanglish: "Pulli",
+          meaning: "Point",
+        },
+        {
+          tamil: "கோடு",
+          tanglish: "Kodu",
+          meaning: "Line",
+        },
+        {
+          tamil: "துளை",
+          tanglish: "Thulai",
+          meaning: "Hole",
+        },
+        {
+          tamil: "மூலை",
+          tanglish: "Moolai",
+          meaning: "Corner",
+        },
+        {
+          tamil: "மையம்",
+          tanglish: "Maiyam",
+          meaning: "Middle/Center",
+        },
+        {
+          tamil: "வாயு",
+          tanglish: "Vaayu",
+          meaning: "Gas",
+        },
+        {
+          tamil: "நீர்மம்",
+          tanglish: "Neermai",
+          meaning: "Liquid",
+        },
+        {
+          tamil: "திண்மம்",
+          tanglish: "Thinmam",
+          meaning: "Solid",
+        },
+        {
+          tamil: "மென்மை",
+          tanglish: "Menmai",
+          meaning: "Soft",
+        },
+        {
+          tamil: "சொரசொர",
+          tanglish: "Sorasora",
+          meaning: "Rough",
+        },
+        {
+          tamil: "கூர்",
+          tanglish: "Koor",
+          meaning: "Sharp",
+        },
+        {
+          tamil: "ஈரம்",
+          tanglish: "Eeram",
+          meaning: "Wet",
+        },
+        {
+          tamil: "காய்ந்த",
+          tanglish: "Kaaintha",
+          meaning: "Dry",
+        },
+        {
+          tamil: "சட்டை",
+          tanglish: "Chattai",
+          meaning: "Shirt",
+        },
+        {
+          tamil: "புடவை",
+          tanglish: "Pudavai",
+          meaning: "Sari",
+        },
+        {
+          tamil: "வேட்டி",
+          tanglish: "Vaetti",
+          meaning: "Dhoti",
+        },
+        {
+          tamil: "துண்டு",
+          tanglish: "Thuvattu",
+          meaning: "Towel",
+        },
+        {
+          tamil: "மோதிரம்",
+          tanglish: "Modhiram",
+          meaning: "Ring",
+        },
+        {
+          tamil: "சங்கிலி",
+          tanglish: "Sangili",
+          meaning: "Chain",
+        },
+        {
+          tamil: "வளையல்",
+          tanglish: "Valaiyal",
+          meaning: "Bangle",
+        },
+        {
+          tamil: "பொத்தான்",
+          tanglish: "Botthaan",
+          meaning: "Button",
+        },
+        {
+          tamil: "தொப்பி",
+          tanglish: "Thoppi",
+          meaning: "Cap",
+        },
+        {
+          tamil: "குடை",
+          tanglish: "Kudai",
+          meaning: "Umbrella",
+        },
+        {
+          tamil: "செருப்பு",
+          tanglish: "Seruppu",
+          meaning: "Sandals",
+        },
+        {
+          tamil: "வாழை",
+          tanglish: "Vaazhai",
+          meaning: "Banana",
+        },
+        {
+          tamil: "மாம்பழம்",
+          tanglish: "Maampazham",
+          meaning: "Mango",
+        },
+        {
+          tamil: "தேங்காய்",
+          tanglish: "Thaengai",
+          meaning: "Coconut",
+        },
+        {
+          tamil: "பூண்டு",
+          tanglish: "Poondu",
+          meaning: "Garlic",
+        },
+        {
+          tamil: "வெங்காயம்",
+          tanglish: "Vengaayam",
+          meaning: "Onion",
+        },
+        {
+          tamil: "இஞ்சி",
+          tanglish: "Inji",
+          meaning: "Ginger",
+        },
+        {
+          tamil: "மிளகு",
+          tanglish: "Milagu",
+          meaning: "Pepper",
+        },
+        {
+          tamil: "சீரகம்",
+          tanglish: "Seeragam",
+          meaning: "Cumin",
+        },
+        {
+          tamil: "புளி",
+          tanglish: "Puli",
+          meaning: "Tamarind",
+        },
+        {
+          tamil: "கடுகு",
+          tanglish: "Kadugu",
+          meaning: "Mustard",
+        },
+        {
+          tamil: "கறிவேப்பிலை",
+          tanglish: "Karuvaepillai",
+          meaning: "Curry leaf",
+        },
+        {
+          tamil: "எலுமிச்சை",
+          tanglish: "Elumichai",
+          meaning: "Lemon",
+        },
+        {
+          tamil: "இருபது",
+          tanglish: "Irupadhu",
+          meaning: "Twenty",
+        },
+        {
+          tamil: "முப்பது",
+          tanglish: "Muppadhu",
+          meaning: "Thirty",
+        },
+        {
+          tamil: "நாற்பது",
+          tanglish: "Naarpathu",
+          meaning: "Forty",
+        },
+        {
+          tamil: "ஐம்பது",
+          tanglish: "Aimpathu",
+          meaning: "Fifty",
+        },
+        {
+          tamil: "அறுபது",
+          tanglish: "Arupathu",
+          meaning: "Sixty",
+        },
+        {
+          tamil: "எழுபது",
+          tanglish: "Ezhupathu",
+          meaning: "Seventy",
+        },
+        {
+          tamil: "எண்பது",
+          tanglish: "Enpathu",
+          meaning: "Eighty",
+        },
+        {
+          tamil: "தொண்ணூறு",
+          tanglish: "Thonnooru",
+          meaning: "Ninety",
+        },
+        {
+          tamil: "நூறு",
+          tanglish: "Nooru",
+          meaning: "Hundred",
+        },
+        {
+          tamil: "ஆயிரம்",
+          tanglish: "Aayiram",
+          meaning: "Thousand",
+        },
+        {
+          tamil: "லட்சம்",
+          tanglish: "Latcham",
+          meaning: "Lakh",
+        },
+        {
+          tamil: "கோடி",
+          tanglish: "Kodi",
+          meaning: "Crore",
+        },
+        {
+          tamil: "தை",
+          tanglish: "Thai",
+          meaning: "January",
+        },
+        {
+          tamil: "மாசி",
+          tanglish: "Maasi",
+          meaning: "February",
+        },
+        {
+          tamil: "பங்குனி",
+          tanglish: "Panguni",
+          meaning: "March",
+        },
+        {
+          tamil: "சித்திரை",
+          tanglish: "Chithirai",
+          meaning: "April",
+        },
+        {
+          tamil: "வைகாசி",
+          tanglish: "Vaikaasi",
+          meaning: "May",
+        },
+        {
+          tamil: "ஆனி",
+          tanglish: "Aani",
+          meaning: "June",
+        },
+        {
+          tamil: "ஆடி",
+          tanglish: "Aadi",
+          meaning: "July",
+        },
+        {
+          tamil: "ஆவணி",
+          tanglish: "Aavani",
+          meaning: "August",
+        },
+        {
+          tamil: "புரட்டாசி",
+          tanglish: "Purattasi",
+          meaning: "September",
+        },
+        {
+          tamil: "ஐப்பசி",
+          tanglish: "Aippasi",
+          meaning: "October",
+        },
+        {
+          tamil: "கார்த்திகை",
+          tanglish: "Karthigai",
+          meaning: "November",
+        },
+        {
+          tamil: "மார்கழி",
+          tanglish: "Maargazhi",
+          meaning: "December",
+        },
+        {
+          tamil: "சிறப்பு",
+          tanglish: "Sirappu",
+          meaning: "Special",
+        },
+        {
+          tamil: "முக்கியம்",
+          tanglish: "Mukkiyam",
+          meaning: "Important",
+        },
+        {
+          tamil: "முடியும்",
+          tanglish: "Mudiyum",
+          meaning: "Possible",
+        },
+        {
+          tamil: "முடியாது",
+          tanglish: "Mudiyadhu",
+          meaning: "Impossible",
+        },
+        {
+          tamil: "வேற",
+          tanglish: "Vera",
+          meaning: "Different",
+        },
+        {
+          tamil: "அதே",
+          tanglish: "Adhae",
+          meaning: "Same",
+        },
+        {
+          tamil: "நிறைந்த",
+          tanglish: "Niraintha",
+          meaning: "Full",
+        },
+        {
+          tamil: "காலி",
+          tanglish: "Kaali",
+          meaning: "Empty",
+        },
+        {
+          tamil: "புகழ்",
+          tanglish: "Pugazh",
+          meaning: "Famous",
+        },
+        {
+          tamil: "ஆழம்",
+          tanglish: "Aazham",
+          meaning: "Deep",
+        },
+        {
+          tamil: "ஆழமில்லை",
+          tanglish: "Aazhamillai",
+          meaning: "Shallow",
+        },
+        {
+          tamil: "தயார்",
+          tanglish: "Thayaar",
+          meaning: "Ready",
+        },
+        {
+          tamil: "கோவில்",
+          tanglish: "Koil",
+          meaning: "Temple",
+        },
+        {
+          tamil: "கட்டிடம்",
+          tanglish: "Kattidam",
+          meaning: "Building",
+        },
+        {
+          tamil: "மருத்துவமனை",
+          tanglish: "Maruthuvamanai",
+          meaning: "Hospital",
+        },
+        {
+          tamil: "அறை",
+          tanglish: "Arai",
+          meaning: "Room",
+        },
+        {
+          tamil: "சமையலறை",
+          tanglish: "Samaiyal-arai",
+          meaning: "Kitchen",
+        },
+        {
+          tamil: "தோட்டம்",
+          tanglish: "Thottam",
+          meaning: "Garden",
+        },
+        {
+          tamil: "பூங்கா",
+          tanglish: "Poonga",
+          meaning: "Park",
+        },
+        {
+          tamil: "நூலகம்",
+          tanglish: "Noolagam",
+          meaning: "Library",
+        },
+        {
+          tamil: "வங்கி",
+          tanglish: "Vangi",
+          meaning: "Bank",
+        },
+        {
+          tamil: "அஞ்சலகம்",
+          tanglish: "Anjalagam",
+          meaning: "Post Office",
+        },
+        {
+          tamil: "புரியும்",
+          tanglish: "Puriyum",
+          meaning: "Understand",
+        },
+        {
+          tamil: "மறதி",
+          tanglish: "Maradhi",
+          meaning: "Forgetfulness",
+        },
+        {
+          tamil: "ஞாபகம்",
+          tanglish: "Gnaabagam",
+          meaning: "Remember",
+        },
+        {
+          tamil: "முயற்சி",
+          tanglish: "Muyarchi",
+          meaning: "Try",
+        },
+        {
+          tamil: "சோதனை",
+          tanglish: "Sodhanai",
+          meaning: "Check",
+        },
+        {
+          tamil: "மாற்று",
+          tanglish: "Maatru",
+          meaning: "Change",
+        },
+        {
+          tamil: "கலந்த",
+          tanglish: "Kalantha",
+          meaning: "Mix",
+        },
+        {
+          tamil: "பிரிவு",
+          tanglish: "Pirivu",
+          meaning: "Separate",
+        },
+        {
+          tamil: "தெரியும்",
+          tanglish: "Theriyum",
+          meaning: "Know",
+        },
+        {
+          tamil: "தெரியாது",
+          tanglish: "Theriyaadhu",
+          meaning: "Don't know",
+        },
+        {
+          tamil: "வேண்டும்",
+          tanglish: "Vendum",
+          meaning: "Want",
+        },
+        {
+          tamil: "வேண்டாம்",
+          tanglish: "Vendaam",
+          meaning: "Don't want",
+        },
+        {
+          tamil: "போதும்",
+          tanglish: "Podhum",
+          meaning: "Enough",
+        },
+        {
+          tamil: "போதாது",
+          tanglish: "Podhaadhu",
+          meaning: "Not enough",
+        },
       ];
 
       /* ---------- TAMIL SPLIT ---------- */
@@ -552,7 +3166,7 @@
 
         const share = `EZHUDHU #${getDailyIndex(WORDS.length)}
 ${emojiGrid.join("\n")}`;
-// https://ezhudhu.com
+        // https://ezhudhu.com
         const shareEl = document.getElementById("share");
         shareEl.textContent = share;
         shareEl.style.fontSize = "16px";
@@ -570,6 +3184,11 @@ ${emojiGrid.join("\n")}`;
       }
 
       /* ---------- KEYBOARD ---------- */
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        keyboardWrapper.style.display = "none";
+      }
       document.querySelector(".keyboard").onclick = (e) => {
         if (!e.target.classList.contains("key")) return;
         if (e.target.id === "back") inputEl.value = inputEl.value.slice(0, -1);
