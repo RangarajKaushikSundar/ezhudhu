@@ -38,6 +38,138 @@
         margin: 4px 0 0;
         color: #555;
       }
+      /* Modal Styles */
+      
+      /* Backdrop */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-backdrop.hidden {
+        display: none;
+      }
+
+      /* Modal box */
+      .modal {
+        background: #fff;
+        width: 90%;
+        max-width: 420px;
+        border-radius: 16px;
+        text-align: left;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+      }
+
+      /* Header */
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: left;
+        padding: 16px 20px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .modal-header h2 {
+        margin: 8px 2px;
+        font-size: 20px;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        padding: 0px 14px;
+        font-size: 26px;
+        cursor: pointer;
+        color: #666;
+      }
+
+      /* Content */
+      .modal-content {
+        padding: 16px 20px;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .rules {
+        padding-left: 18px;
+        margin: 0 0 16px;
+      }
+
+      .rules li {
+        margin-bottom: 8px;
+      }
+
+      /* Legend */
+      .legend {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+        font-size: 14px;
+      }
+
+      .legend div {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .tile {
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        display: inline-block;
+      }
+
+      .tile.green {
+        background: #4caf50;
+      }
+
+      .tile.red {
+        background: #f44336;
+      }
+
+      /* Example */
+      .example {
+        background: #f7f7f7;
+        border-radius: 12px;
+        padding: 12px;
+      }
+
+      .example h3 {
+        margin: 0 0 6px;
+        font-size: 16px;
+      }
+
+      /* Footer */
+      .modal-footer {
+        padding: 12px 20px 16px;
+      }
+
+      .primary-btn {
+        width: 100%;
+        padding: 10px 14px;
+        background: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .primary-btn:hover {
+        background: #43a047;
+      }
 
       /* ---------- BOARD ---------- */
       .board-wrapper {
@@ -627,14 +759,13 @@
       <div class="screen-container">
         <div class="glitch-container" id="glitch-text">PAZHAGU</div>
       </div>
-      <p>Daily Tamil Word</p>
+      <p>Daily Challenge</p>
     </header>
     <div class="board-wrapper">
       <div class="board">
         <div class="hint">
-          <h3>Game Rules</h3>
-          Write the Tanglish word in Tamil script within 3 attempts.<br />
-          Use native letters (ர ≠ ற, ல ≠ ள ≠ ழ).
+          <h3>Game Rules <span id="rules">ⓘ</span></h3>
+          Type the தnglish word in தமிழ் within 3 attempts.<br />
         </div>
 
         <div
@@ -657,7 +788,7 @@
             <div class="column">
               <div class="row">
                 <div class="column">
-                  <h4>Tanglish</h4>
+                  <h4>தnglish</h4>
                 </div>
                 <div class="column">
                   <button class="toggle-tanglish-btn" id="toggleTanglishBtn">
@@ -695,10 +826,50 @@
             </div>
           </div>
         </div>
+
+        <!-- How to Play Modal -->
+        <div id="howToPlayModal" class="modal-backdrop hidden">
+          <div class="modal">
+            <div class="modal-header">
+              <h2>How to Play</h2>
+              <button class="close-btn" aria-label="Close">&times;</button>
+            </div>
+
+            <div class="modal-content">
+              <ul class="rules">
+                You’ll get a
+                <strong>தnglish</strong>
+                word (தமிழ் written in English letters)
+                <br />
+                Type the word in
+                <strong>தமிழ்</strong
+                ><br />
+                You have
+                <strong>3 attempts</strong
+                >
+              </ul>
+
+              <div class="legend">
+                <span class="tile green"></span> Correct letter & position
+                <span class="tile red"></span> Incorrect letter
+              </div>
+
+              <div class="example">
+                <h3>Example</h3>
+                <p><strong>தnglish:</strong> Vazhi</p>
+                <p><strong>Tamil:</strong> வழி</p>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button class="primary-btn">Got it!</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- ---------- KEYBOARD (4 rows: 12 / 11 / 12 / 12) ---------- -->
+    <!-- ---------- KEYBOARD  ---------- -->
     <section class="keyboard-wrapper">
       <div class="keyboard">
         <div class="key-row">
@@ -762,6 +933,33 @@
     </section>
 
     <script>
+      /* ---------- MODAL LOGIC ---------- */
+      const modal = document.getElementById("howToPlayModal");
+      const closeBtn = modal.querySelector(".close-btn");
+      const gotItBtn = modal.querySelector(".primary-btn");
+
+      // Open modal (call this on first visit or help icon click)
+      function openHowToPlay() {
+        modal.classList.remove("hidden");
+      }
+
+      // Close modal
+      function closeHowToPlay() {
+        modal.classList.add("hidden");
+      }
+
+      closeBtn.addEventListener("click", closeHowToPlay);
+      gotItBtn.addEventListener("click", closeHowToPlay);
+
+      // Optional: close when clicking outside the modal
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeHowToPlay();
+      });
+
+      // Example: auto-open on first load
+      document.getElementById("rules").addEventListener("click", openHowToPlay);
+      // openHowToPlay();
+
       /* ---------- GLITCH EFFECT ---------- */
       const textElement = document.getElementById("glitch-text");
       const states = ["PAZHAGU", "பழகு"];
