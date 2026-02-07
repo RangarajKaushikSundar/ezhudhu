@@ -39,7 +39,7 @@
         color: #555;
       }
       /* Modal Styles */
-      
+
       /* Backdrop */
       .modal-backdrop {
         position: fixed;
@@ -704,6 +704,7 @@
       .screen-container {
         position: relative;
         animation: flicker 0.15s infinite;
+        height: 40px;
       }
 
       .glitch-container {
@@ -845,8 +846,7 @@
                 <strong>தமிழ்</strong
                 ><br />
                 You have
-                <strong>3 attempts</strong
-                >
+                <strong>3 attempts</strong>
               </ul>
 
               <div class="legend">
@@ -931,6 +931,19 @@
         </div>
       </div>
     </section>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-4HFTMPY2L9"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-4HFTMPY2L9");
+    </script>
 
     <script>
       /* ---------- MODAL LOGIC ---------- */
@@ -2008,7 +2021,7 @@ ${emojiGrid.join("\n")}`;
         const popup = document.getElementById("myPopup");
         btn.style.display = "inline-block";
         btn.onclick = () => {
-          const shareText = share + "\n\nPlay here: https://thamizhpazhagu.com";
+          const shareText = share + "\n\nPlay here: https://tamilpazhagu.com";
           navigator.clipboard.writeText(shareText);
           popup.classList.toggle("show");
         };
