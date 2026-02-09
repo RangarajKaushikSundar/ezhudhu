@@ -766,7 +766,7 @@
       <div class="board">
         <div class="hint">
           <h3>Game Rules <span id="rules">ⓘ</span></h3>
-          Type the தnglish word in தமிழ் within 3 attempts.<br />
+          Type the <b>தnglish</b> word in <b>தமிழ்</b> within 3 attempts.<br />
         </div>
 
         <div
@@ -829,46 +829,40 @@
         </div>
 
         <!-- How to Play Modal -->
-        <div id="howToPlayModal" class="modal-backdrop hidden">
-          <div class="modal">
-            <div class="modal-header">
-              <h2>How to Play</h2>
-              <button class="close-btn" aria-label="Close">&times;</button>
-            </div>
+        <div id="howToPlayModal" class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Learn தமிழ் through தnglish</h2>
+      <button class="close-btn" aria-label="Close">&times;</button>
+    </div>
 
-            <div class="modal-content">
-              <ul class="rules">
-                You’ll get a
-                <strong>தnglish</strong>
-                word (தமிழ் written in English letters)
-                <br />
-                Type the word in
-                <strong>தமிழ்</strong
-                ><br />
-                You have
-                <strong>3 attempts</strong>
-              </ul>
+    <div class="modal-content">
+      <p class="mission-statement">
+        Can you speak Tamil but struggle to read or write it? This game helps you bridge that gap by typing the words you already know.
+      </p>
 
-              <div class="legend">
-                <span class="tile green"></span> Correct letter & position
-                <span class="tile red"></span> Incorrect letter
-              </div>
+     
 
-              <div class="example">
-                <h3>Example</h3>
-                <p><strong>தnglish:</strong> Vazhi</p>
-                <p><strong>Tamil:</strong> வழி</p>
-              </div>
-            </div>
+      <hr class="separator" />
 
-            <div class="modal-footer">
-              <button class="primary-btn">Got it!</button>
-            </div>
-          </div>
-        </div>
+      <ul class="rules">
+        <li>You have <b>3 attempts</b>.</li>
+        <li><div class="tile green"></div> Correct letter</li>
+        <li><div class="tile red"></div> Incorrect letter</li>
+        <li>Click the <b>EASY/HARD</b> toggle to switch modes.</li>
+      </ul>
+
+      <div class="example-card">
+        <h4>Example</h4>
+        <img src="example.png" alt="Example" style="width:330px; vertical-align:middle;" />
       </div>
     </div>
 
+    <div class="modal-footer">
+      <button class="primary-btn">Okay!</button>
+    </div>
+  </div>
+</div>
     <!-- ---------- KEYBOARD  ---------- -->
     <section class="keyboard-wrapper">
       <div class="keyboard">
@@ -955,6 +949,7 @@
       function openHowToPlay() {
         modal.classList.remove("hidden");
       }
+      openHowToPlay()
 
       // Close modal
       function closeHowToPlay() {
@@ -1018,8 +1013,6 @@
         { tamil: "நில்லு", tanglish: "Nillu", meaning: "Stand (command)" },
         { tamil: "அனுப்பு", tanglish: "Anuppu", meaning: "Send" },
         { tamil: "உட்கார்", tanglish: "Utkaar", meaning: "Sit" },
-        { tamil: "இறங்கு", tanglish: "Irangu", meaning: "Get down" },
-        { tamil: "கழுவு", tanglish: "Kazhuvu", meaning: "Wash" },
         { tamil: "நிறுத்து", tanglish: "Niruthu", meaning: "Stop" },
         { tamil: "தொடங்கு", tanglish: "Thodangu", meaning: "Start" },
         { tamil: "முடிக்க", tanglish: "Mudikka", meaning: "To finish" },
@@ -1848,7 +1841,7 @@
       /* ---------- DAILY ---------- */
       function getDailyWordIndex() {
         const now = new Date();
-        const START_DATE = new Date("2026-02-06").getTime();
+        const START_DATE = new Date("2026-02-05").getTime();
         const daysSinceEpoch = Math.floor(
           (now.getTime() - START_DATE) / (1000 * 60 * 60 * 24),
         );
