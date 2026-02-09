@@ -1127,6 +1127,25 @@ function isVowelModifier(char) {
   return vowelModifiers.includes(char);
 }
 
+// Check if a character is an independent vowel (cannot take vowel modifiers)
+function isIndependentVowel(char) {
+  const independentVowels = [
+    "அ",
+    "ஆ",
+    "இ",
+    "ஈ",
+    "உ",
+    "ஊ",
+    "எ",
+    "ஏ",
+    "ஐ",
+    "ஒ",
+    "ஓ",
+    "ஔ",
+  ];
+  return independentVowels.includes(char);
+}
+
 function renderGridForAttempt(attemptIndex) {
   console.log("Rendering grid for attempt", attemptIndex, "with input", currentInput);
   if (attemptIndex >= grids.length) return;
@@ -1139,6 +1158,17 @@ function renderGridForAttempt(attemptIndex) {
     } else {
       box.textContent = "";
     }
+  });
+}
+
+// Toggle visual disabled state for vowel modifier keys
+function setVowelModifiersDisabled(disabled) {
+  const vowelRow = document.getElementById('vowel-row');
+  if (!vowelRow) return;
+  const keys = vowelRow.querySelectorAll('.key');
+  keys.forEach(k => {
+    if (disabled) k.classList.add('disabled');
+    else k.classList.remove('disabled');
   });
 }
 
@@ -1157,7 +1187,13 @@ function handleKeyPress(event) {
     if (currentInput.length <= boxes.length) {
       // Check if this is a vowel modifier and combine with previous character
       if (isVowelModifier(key) && currentInput.length > 0) {
-        currentInput[currentInput.length - 1] += key;
+        const prev = currentInput[currentInput.length - 1];
+        // Do not combine a vowel modifier with an independent vowel
+        if (!isIndependentVowel(prev)) {
+          currentInput[currentInput.length - 1] += key;
+        } else {
+          // ignore combining modifier with independent vowel
+        }
       } else if (currentInput.length === boxes.length) {
         // If the grid is full, do nothing
       } else {
@@ -1185,7 +1221,12 @@ document.querySelector(".keyboard").onclick = (e) => {
 
       if (currentInput.length <= boxes.length) {
         if (isVowelModifier(key) && currentInput.length > 0) {
-          currentInput[currentInput.length - 1] += key;
+          const prev = currentInput[currentInput.length - 1];
+          if (!isIndependentVowel(prev)) {
+            currentInput[currentInput.length - 1] += key;
+          } else {
+            // ignore combining modifier with independent vowel
+          }
         } else if (currentInput.length === boxes.length) {
           // If the grid is full, do nothing
         } else {
@@ -1196,6 +1237,22 @@ document.querySelector(".keyboard").onclick = (e) => {
     }
   }
 };
+
+// Update visual state when clicking keys (disable diacritics if independent vowel selected)
+document.querySelector('.keyboard').addEventListener('click', (e) => {
+  if (!e.target.classList.contains('key')) return;
+  const key = e.target.textContent;
+  // If an independent vowel key was clicked and it's being added as a new character,
+  // then disable vowel modifiers; otherwise re-enable.
+  // Determine last character after the click effect by peeking at currentInput
+  // (Note: click handler above already mutates currentInput before this runs)
+  const last = currentInput.length > 0 ? currentInput[currentInput.length - 1] : null;
+  if (last && isIndependentVowel(last[0])) {
+    setVowelModifiersDisabled(true);
+  } else {
+    setVowelModifiersDisabled(false);
+  }
+});
 
 document.addEventListener("keypress", handleKeyPress);
 initializeGame();

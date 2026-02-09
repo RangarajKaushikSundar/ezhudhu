@@ -866,6 +866,14 @@
     <!-- ---------- KEYBOARD  ---------- -->
     <section class="keyboard-wrapper">
       <div class="keyboard">
+        <style>
+          /* Disabled key style for vowel modifiers */
+          .key.disabled {
+            opacity: 0.35;
+            pointer-events: none;
+            filter: grayscale(100%);
+          }
+        </style>
         <div class="key-row">
           <div class="key">அ</div>
           <div class="key">ஆ</div>
