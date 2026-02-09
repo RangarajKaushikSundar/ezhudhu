@@ -1120,6 +1120,7 @@ function isVowelModifier(char) {
     "ே",
     "ை",
     "ோ",
+    "ொ",
     "ௌ",
     "்",
   ];
