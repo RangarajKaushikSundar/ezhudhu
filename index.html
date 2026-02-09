@@ -4,50 +4,73 @@
     <meta charset="UTF-8" />
     <title>தமிழ் PAZHAGU - Daily Challenge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <style>
       /* ---------- RESET / BASE ---------- */
+
       body {
         margin: 0;
+
         font-family:
           system-ui,
           -apple-system,
           sans-serif;
+
         background: #fafafa;
+
         text-align: center;
-        padding-bottom: 280px; /* space for keyboard */
+
+        padding-bottom: 280px;
+
+        /* space for keyboard */
       }
 
       header {
         text-align: center;
+
         padding: 20px 10px 10px;
+
         border: 2px solid #ddd;
+
         border-radius: 8px;
+
         margin: 10px;
+
         background: #fff;
+
         color: black;
       }
 
       header h1 {
         margin: 0;
+
         font-size: 36px;
+
         letter-spacing: 2px;
       }
 
       header p {
         margin: 4px 0 0;
+
         color: #555;
       }
+
       /* Modal Styles */
 
       /* Backdrop */
+
       .modal-backdrop {
         position: fixed;
+
         inset: 0;
+
         background: rgba(0, 0, 0, 0.45);
+
         display: flex;
+
         align-items: center;
+
         justify-content: center;
+
         z-index: 1000;
       }
 
@@ -56,14 +79,22 @@
       }
 
       /* Modal box */
+
       .modal {
         background: #fff;
+
         width: 90%;
+
         max-width: 420px;
+
         border-radius: 16px;
+
         text-align: left;
+
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
         overflow: hidden;
+
         font-family:
           system-ui,
           -apple-system,
@@ -72,37 +103,52 @@
       }
 
       /* Header */
+
       .modal-header {
         display: flex;
+
         justify-content: space-between;
+
         align-items: left;
+
         padding: 16px 20px;
+
         border-bottom: 1px solid #eee;
       }
 
       .modal-header h2 {
         margin: 8px 2px;
+
         font-size: 20px;
       }
 
       .close-btn {
         background: none;
+
         border: none;
+
         padding: 0px 14px;
+
         font-size: 26px;
+
         cursor: pointer;
+
         color: #666;
       }
 
       /* Content */
+
       .modal-content {
         padding: 16px 20px;
+
         font-size: 15px;
+
         line-height: 1.5;
       }
 
       .rules {
         padding-left: 18px;
+
         margin: 0 0 16px;
       }
 
@@ -111,23 +157,32 @@
       }
 
       /* Legend */
+
       .legend {
         display: flex;
+
         gap: 16px;
+
         margin-bottom: 16px;
+
         font-size: 14px;
       }
 
       .legend div {
         display: flex;
+
         align-items: center;
+
         gap: 6px;
       }
 
       .tile {
         width: 18px;
+
         height: 18px;
+
         border-radius: 4px;
+
         display: inline-block;
       }
 
@@ -140,30 +195,42 @@
       }
 
       /* Example */
+
       .example {
         background: #f7f7f7;
+
         border-radius: 12px;
+
         padding: 12px;
       }
 
       .example h3 {
         margin: 0 0 6px;
+
         font-size: 16px;
       }
 
       /* Footer */
+
       .modal-footer {
         padding: 12px 20px 16px;
       }
 
       .primary-btn {
         width: 100%;
+
         padding: 10px 14px;
+
         background: #4caf50;
+
         color: white;
+
         border: none;
+
         border-radius: 10px;
+
         font-size: 16px;
+
         cursor: pointer;
       }
 
@@ -172,19 +239,24 @@
       }
 
       /* ---------- BOARD ---------- */
+
       .board-wrapper {
         display: flex;
+
         justify-content: center;
       }
 
       .board {
         width: 100%;
+
         max-width: 420px;
       }
 
       .hint {
         font-size: 14px;
+
         color: #555;
+
         margin-bottom: 12px;
       }
 
@@ -194,45 +266,65 @@
 
       .grid {
         display: flex;
+
         justify-content: center;
+
         gap: 10px;
+
         margin: 20px 0;
       }
 
       /* ---------- TILE ---------- */
+
       .box {
         width: 52px;
+
         height: 52px;
+
         border: 2px solid #ccc;
+
         border-radius: 8px;
+
         font-size: 24px;
+
         display: flex;
+
         align-items: center;
+
         justify-content: center;
+
         background: #fff;
+
         transform-style: preserve-3d;
       }
 
       .correct {
         background: #4caf50;
+
         color: #fff;
+
         border: none;
       }
 
       .wrong {
         background: #f44336;
+
         color: #fff;
+
         border: none;
       }
 
       /* ---------- ANIMATIONS ---------- */
+
       @keyframes flip {
         0% {
           transform: rotateX(0);
         }
+
         50% {
           transform: rotateX(90deg);
         }
+
         100% {
           transform: rotateX(0);
         }
@@ -243,9 +335,11 @@
         100% {
           transform: translateX(0);
         }
+
         25% {
           transform: translateX(-5px);
         }
+
         75% {
           transform: translateX(5px);
         }
@@ -260,59 +354,92 @@
       }
 
       /* ---------- INPUT ---------- */
+
       textarea {
         width: 100%;
+
         font-size: 18px;
+
         padding: 10px;
+
         border-radius: 8px;
+
         border: 1px solid #ccc;
       }
 
       button {
         margin-top: 10px;
+
         padding: 12px 16px;
+
         font-size: 16px;
+
         cursor: pointer;
+
         border-radius: 8px;
+
         border: none;
+
         background: #000;
+
         color: #fff;
       }
 
       /* ---------- KEYBOARD ---------- */
+
       .keyboard-wrapper {
         position: fixed;
+
         bottom: 0;
+
         left: 0;
+
         width: 100%;
+
         background: #eaecef;
+
         padding: 8px 6px 12px;
+
         z-index: 100;
       }
 
       .keyboard {
         max-width: 760px;
+
         margin: 0 auto;
       }
 
       .key-row {
         display: flex;
+
         justify-content: center;
+
         gap: 4px;
+
         margin-bottom: 6px;
       }
 
       .key {
         flex: 1 1 0;
+
         min-width: 0;
+
         padding: 10px 4px;
+
         background: #dfe3e8;
+
         border-radius: 6px;
+
         font-size: 16px;
+
         user-select: none;
+
         cursor: pointer;
+
         display: flex;
+
         align-items: center;
+
         justify-content: center;
       }
 
@@ -325,137 +452,231 @@
       }
 
       /* ---------- SHARE ---------- */
+
       .message {
         margin-top: 12px;
+
         font-weight: bold;
       }
 
       .share {
         white-space: pre;
+
         font-family: monospace;
+
         margin-top: 10px;
+
         font-size: 14px;
       }
 
       .shareBtn {
         margin-top: 8px;
+
         display: none;
+
         background-color: #4caf50;
+
         color: white;
       }
 
       /** icons **/
+
       .shareicon {
         font-weight: bold;
+
         position: relative;
       }
+
       .shareicon:before {
         content: ".";
+
         font-size: 2.2em;
+
         position: absolute;
+
         bottom: -2.5px;
+
         left: -4px;
       }
+
       .shareicon:after {
         content: ":";
+
         font-size: 2em;
+
         position: absolute;
+
         bottom: -6px;
+
         right: -6px;
       }
 
       /* ---------- RESULT MODAL ---------- */
+
       /* The Modal (background) */
+
       .resultmodal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
+        display: none;
+
+        /* Hidden by default */
+
+        position: fixed;
+
+        /* Stay in place */
+
+        z-index: 1;
+
+        /* Sit on top */
+
+        padding-top: 100px;
+
+        /* Location of the box */
+
         left: 0;
+
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0); /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+        width: 100%;
+
+        /* Full width */
+
+        height: 100%;
+
+        /* Full height */
+
+        overflow: auto;
+
+        /* Enable scroll if needed */
+
+        background-color: rgb(0, 0, 0);
+
+        /* Fallback color */
+
+        background-color: rgba(0, 0, 0, 0.4);
+
+        /* Black w/ opacity */
       }
 
       /* Modal Content */
+
       .resultmodal-content {
         background-color: #fefefe;
+
         margin: auto;
+
         padding: 20px;
+
         border: 1px solid #888;
+
         width: 32vw;
       }
 
       /* The Close Button */
+
       .resultmodalclose {
         color: #aaaaaa;
+
         float: right;
+
         font-size: 28px;
+
         font-weight: bold;
       }
 
       .resultmodalclose:hover,
       .resultmodalclose:focus {
         color: #000;
+
         text-decoration: none;
+
         cursor: pointer;
       }
 
       /** Popup **/
+
       /* Popup container - can be anything you want */
+
       .popup {
         position: relative;
+
         display: inline-block;
+
         cursor: pointer;
+
         -webkit-user-select: none;
+
         -moz-user-select: none;
+
         -ms-user-select: none;
+
         user-select: none;
       }
 
       /* The actual popup */
+
       .popup .popuptext {
         visibility: hidden;
+
         width: 160px;
+
         background-color: #555;
+
         color: #fff;
+
         text-align: center;
+
         border-radius: 6px;
+
         padding: 8px 0;
+
         position: absolute;
+
         z-index: 1;
+
         bottom: 125%;
+
         left: 50%;
+
         margin-left: -80px;
       }
 
       /* Popup arrow */
+
       .popup .popuptext::after {
         content: "";
+
         position: absolute;
+
         top: 100%;
+
         left: 50%;
+
         margin-left: -5px;
+
         border-width: 5px;
+
         border-style: solid;
+
         border-color: #555 transparent transparent transparent;
       }
 
       /* Toggle this class - hide and show the popup */
+
       .popup .show {
         visibility: visible;
+
         -webkit-animation: fadeIn 1s;
+
         animation: fadeIn 1s;
       }
 
       /* Add animation (fade in the popup) */
+
       @-webkit-keyframes fadeIn {
         from {
           opacity: 0;
         }
+
         to {
           opacity: 1;
         }
@@ -465,32 +686,45 @@
         from {
           opacity: 0;
         }
+
         to {
           opacity: 1;
         }
       }
 
       /* ---------- MODE BUTTONS ---------- */
+
       .mode-buttons {
         display: flex;
+
         gap: 10px;
+
         justify-content: center;
+
         margin: 10px;
+
         flex-wrap: wrap;
       }
 
       .mode-btn {
         border-radius: 8px;
+
         border: 2px solid #000;
+
         background: #fff;
+
         color: #000;
+
         cursor: pointer;
+
         font-weight: bold;
+
         transition: all 0.3s ease;
       }
 
       .mode-btn.active {
         background: #000;
+
         color: #fff;
       }
 
@@ -500,11 +734,17 @@
 
       .toggle-tanglish-btn {
         font-size: 14px;
+
         background: white;
+
         border: none;
+
         border-radius: 6px;
+
         cursor: pointer;
+
         margin-top: 10px;
+
         display: none;
       }
 
@@ -513,7 +753,9 @@
       }
 
       /* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+
       /* Tablets/small laptops: slightly compact */
+
       @media (max-width: 500px) {
         .keyboard-wrapper {
           padding: 8px 4px 10px;
@@ -525,100 +767,142 @@
 
         .key {
           padding: 8px 3px;
+
           font-size: 14px;
         }
 
         .key-row {
           gap: 3px;
+
           margin-bottom: 4px;
         }
       }
 
       /* Mobile phones (e.g., Pixel 7): compress significantly */
+
       @media (max-width: 420px) {
         body {
-          padding-bottom: 320px; /* ensure space for 250px keyboard + margin */
+          padding-bottom: 320px;
+
+          /* ensure space for 250px keyboard + margin */
         }
 
         .keyboard-wrapper {
           padding: 6px 3px 8px;
-          height: 250px; /* fixed height for mobile */
+
+          height: 250px;
+
+          /* fixed height for mobile */
+
           box-sizing: border-box;
         }
 
         .keyboard {
           padding: 0 2px;
+
           height: 100%;
+
           display: flex;
+
           flex-direction: column;
+
           justify-content: center;
         }
 
         .key-row {
           gap: 4px;
+
           margin-bottom: 6px;
         }
 
         .key {
           padding: 2px 2px;
+
           font-size: 13px;
+
           min-height: 52px;
         }
+
         .resultmodal-content {
           width: 50vw;
         }
       }
 
       /* Mobile phones (e.g., Pixel 7): compress significantly */
+
       @media (max-width: 390px) {
         body {
-          padding-bottom: 320px; /* ensure space for 250px keyboard + margin */
+          padding-bottom: 320px;
+
+          /* ensure space for 250px keyboard + margin */
         }
 
         .keyboard-wrapper {
           padding: 6px 3px 8px;
-          height: 200px; /* fixed height for mobile */
+
+          height: 200px;
+
+          /* fixed height for mobile */
+
           box-sizing: border-box;
         }
 
         .keyboard {
           padding: 0px;
+
           height: 100%;
+
           display: flex;
+
           flex-direction: column;
+
           justify-content: center;
         }
 
         .key-row {
           gap: 4px;
+
           margin-bottom: 6px;
         }
 
         .key {
           padding: 0px;
+
           font-size: 12px;
+
           min-height: 43px;
         }
       }
 
       /** Column **/
+
       .row {
         display: flex;
+
         flex-direction: row;
+
         flex-wrap: wrap;
+
         width: 100%;
       }
+
       .column h4 {
         align-self: flex-start;
+
         color: gray;
+
         font-size: 14px;
+
         margin-left: 10px;
       }
 
       .column span {
         align-self: flex-end;
+
         font-size: 20px;
+
         padding-right: 10px;
+
         margin-right: 10px;
       }
 
@@ -628,47 +912,73 @@
 
       .column {
         display: flex;
+
         flex-direction: column;
+
         flex-basis: 100%;
+
         flex: 1;
+
         height: auto;
+
         background: #fff;
+
         color: #000;
       }
 
       /* ---------- TOGGLE SWITCH ---------- */
+
       .switch {
         position: relative;
+
         display: inline-block;
+
         width: 50px;
+
         height: 24px;
       }
 
       .switch input {
         opacity: 0;
+
         width: 0;
+
         height: 0;
       }
 
       .slider {
         position: absolute;
+
         cursor: pointer;
+
         top: 0;
+
         left: 0;
+
         right: 0;
+
         bottom: 0;
+
         background-color: #ccc;
+
         transition: 0.4s;
       }
 
       .slider:before {
         position: absolute;
+
         content: "";
+
         height: 18px;
+
         width: 18px;
+
         left: 3px;
+
         bottom: 3px;
+
         background-color: white;
+
         transition: 0.4s;
       }
 
@@ -690,30 +1000,43 @@
 
       .mode-label {
         margin-left: 8px;
+
         font-weight: bold;
+
         font-size: 16px;
+
         vertical-align: middle;
       }
 
       /** GLITCH EFFECT **/
+
       :root {
         --glow-color: black;
       }
 
       /* Flickering CRT Screen effect */
+
       .screen-container {
         position: relative;
+
         animation: flicker 0.15s infinite;
+
         height: 40px;
       }
 
       .glitch-container {
         font-family: "Courier New", Courier, monospace;
+
         color: var(--glow-color);
+
         font-size: 2rem;
+
         font-weight: bold;
+
         letter-spacing: 8px;
+
         position: relative;
+
         text-transform: uppercase;
       }
 
@@ -721,28 +1044,35 @@
         0% {
           opacity: 0.97;
         }
+
         50% {
           opacity: 1;
         }
+
         100% {
           opacity: 0.98;
         }
       }
 
       /* Subtle distortion */
+
       @keyframes jitter {
         0% {
           transform: skew(0deg);
         }
+
         10% {
           transform: skew(1deg);
         }
+
         20% {
           transform: skew(-1deg);
         }
+
         30% {
           transform: skew(0.5deg);
         }
+
         100% {
           transform: skew(0deg);
         }
@@ -762,6 +1092,7 @@
       </div>
       <p>Daily Challenge</p>
     </header>
+
     <div class="board-wrapper">
       <div class="board">
         <div class="hint">
@@ -784,6 +1115,7 @@
           </label>
           <span class="mode-label" id="modeLabel">EASY</span>
         </div>
+
         <div class="meaning">
           <div class="row">
             <div class="column">
@@ -827,43 +1159,49 @@
             </div>
           </div>
         </div>
-
-        <!-- How to Play Modal -->
-        <div id="howToPlayModal" class="modal-backdrop">
-  <div class="modal">
-    <div class="modal-header">
-      <h2>Learn தமிழ் through தnglish</h2>
-      <button class="close-btn" aria-label="Close">&times;</button>
+      </div>
     </div>
+    <div id="howToPlayModal" class="modal-backdrop">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Learn தமிழ் through தnglish</h2>
+          <button class="close-btn" aria-label="Close">&times;</button>
+        </div>
 
-    <div class="modal-content">
-      <p class="mission-statement">
-        Can you speak Tamil but struggle to read or write it? This game helps you bridge that gap by typing the words you already know.
-      </p>
+        <div class="modal-content">
+          <p class="mission-statement">
+            Can you speak Tamil but struggle to read or write it? This game
+            helps you bridge that gap by typing the words you already know.
+          </p>
+          <hr class="separator" />
+          <ul class="rules">
+            <li>You have <b>3 attempts</b>.</li>
+            <li>
+              <div class="tile green"></div>
+              Correct letter
+            </li>
+            <li>
+              <div class="tile red"></div>
+              Incorrect letter
+            </li>
+            <li>Click the <b>EASY/HARD</b> toggle to switch modes.</li>
+          </ul>
+          <div class="example-card">
+            <h4>Example</h4>
+            <img
+              src="example.png"
+              alt="Example"
+              style="width: 330px; vertical-align: middle"
+            />
+          </div>
+        </div>
 
-     
-
-      <hr class="separator" />
-
-      <ul class="rules">
-        <li>You have <b>3 attempts</b>.</li>
-        <li><div class="tile green"></div> Correct letter</li>
-        <li><div class="tile red"></div> Incorrect letter</li>
-        <li>Click the <b>EASY/HARD</b> toggle to switch modes.</li>
-      </ul>
-
-      <div class="example-card">
-        <h4>Example</h4>
-        <img src="example.png" alt="Example" style="width:330px; vertical-align:middle;" />
+        <div class="modal-footer">
+          <button class="primary-btn">Okay!</button>
+        </div>
       </div>
     </div>
 
-    <div class="modal-footer">
-      <button class="primary-btn">Okay!</button>
-    </div>
-  </div>
-</div>
-    <!-- ---------- KEYBOARD  ---------- -->
     <section class="keyboard-wrapper">
       <div class="keyboard">
         <style>
@@ -935,6 +1273,7 @@
         </div>
       </div>
     </section>
+
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-4HFTMPY2L9"
@@ -945,10 +1284,8 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-4HFTMPY2L9");
     </script>
-
     <script src="scripts.js"></script>
   </body>
 </html>
