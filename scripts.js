@@ -140,6 +140,16 @@ function initializeGame() {
   target = splitTamilSyllables(word.tamil);
   tanglishVisible = currentMode === "normal";
 
+  // Update game rule text depending on mode
+  const gameRuleEl = document.getElementById('game-rule');
+  if (gameRuleEl) {
+    if (currentMode === 'hard') {
+      gameRuleEl.innerHTML = 'Tap the <img src="eye.png" alt="Show Tanglish" style="width:16px; vertical-align:middle;" /> icon to reveal the தnglish word.';
+    } else {
+      gameRuleEl.innerHTML = 'This is <u><b>not a guessing game</b></u> — the word is already given.';
+    }
+  }
+
   // Reset display
   updateDisplay();
   renderEmptyGrid();
@@ -1007,6 +1017,16 @@ hardModeToggle.addEventListener("change", () => {
 
   // Update label
   sliderLabel.textContent = hardModeToggle.checked ? "HARD" : "EASY";
+
+  // Update game rule text depending on mode
+  const gameRuleEl = document.getElementById('game-rule');
+  if (gameRuleEl) {
+    if (currentMode === 'hard') {
+      gameRuleEl.innerHTML = 'Tap the <img src="eye.png" alt="Show Tanglish" style="width:16px; vertical-align:middle;" /> icon to reveal the தnglish word.';
+    } else {
+      gameRuleEl.innerHTML = 'This is <u><b>not a guessing game</b></u> — the word is already given.';
+    }
+  }
 
   // Reset and reinitialize game
   initializeGame();
