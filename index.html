@@ -11,8 +11,9 @@
         margin: 0;
 
         font-family:
-          system-ui,
+          "Funnel Sans",
           -apple-system,
+          BlinkMacSystemFont,
           sans-serif;
 
         background: #fafafa;
@@ -27,7 +28,7 @@
       header {
         text-align: center;
 
-        padding: 20px 10px 10px;
+        padding: 20px 10px 6px;
 
         border: 2px solid #ddd;
 
@@ -96,7 +97,7 @@
         overflow: hidden;
 
         font-family:
-          system-ui,
+          "Funnel Sans",
           -apple-system,
           BlinkMacSystemFont,
           sans-serif;
@@ -134,6 +135,12 @@
         cursor: pointer;
 
         color: #666;
+      }
+
+      .header3 {
+        margin-left: 145px;
+        font-size: 1.17em;
+        font-weight: bold;
       }
 
       /* Content */
@@ -210,6 +217,15 @@
         font-size: 16px;
       }
 
+      .rules-row {
+        display: flex;
+        align-items: center;
+      }
+
+      .switch {
+        margin-left: auto;
+        margin-right: 20px;
+      }
       /* Footer */
 
       .modal-footer {
@@ -254,9 +270,6 @@
 
       .hint {
         font-size: 14px;
-
-        color: #555;
-
         margin-bottom: 12px;
       }
 
@@ -962,6 +975,12 @@
         background-color: #ccc;
 
         transition: 0.4s;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
       }
 
       .slider:before {
@@ -1006,6 +1025,23 @@
         font-size: 16px;
 
         vertical-align: middle;
+      }
+
+      /* Label text inside slider */
+      .slider-label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 11px;
+        font-weight: bold;
+        color: #000;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      input:checked + .slider .slider-label {
+        color: #fff;
       }
 
       /** GLITCH EFFECT **/
@@ -1096,8 +1132,40 @@
     <div class="board-wrapper">
       <div class="board">
         <div class="hint">
-          <h3>Game Rules <span id="rules">ⓘ</span></h3>
-          Type the <b>தnglish</b> word in <b>தமிழ்</b> within 3 attempts.<br />
+          <div>
+            <div class="rules-row">
+              <div class="header3">
+                GAME RULES
+                <span id="rules"
+                  ><svg
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="14"
+                    viewBox="2 2 28 28"
+                    line-height="normal"
+                    width="14"
+                    class="game-icon"
+                    data-testid="icon-help"
+                  >
+                    <path
+                      fill="var(--color-tone-1)"
+                      d="M15 24H17.6667V21.3333H15V24ZM16.3333 2.66666C8.97333 2.66666 3 8.63999 3 16C3 23.36 8.97333 29.3333 16.3333 29.3333C23.6933 29.3333 29.6667 23.36 29.6667 16C29.6667 8.63999 23.6933 2.66666 16.3333 2.66666ZM16.3333 26.6667C10.4533 26.6667 5.66667 21.88 5.66667 16C5.66667 10.12 10.4533 5.33332 16.3333 5.33332C22.2133 5.33332 27 10.12 27 16C27 21.88 22.2133 26.6667 16.3333 26.6667ZM16.3333 7.99999C13.3867 7.99999 11 10.3867 11 13.3333H13.6667C13.6667 11.8667 14.8667 10.6667 16.3333 10.6667C17.8 10.6667 19 11.8667 19 13.3333C19 16 15 15.6667 15 20H17.6667C17.6667 17 21.6667 16.6667 21.6667 13.3333C21.6667 10.3867 19.28 7.99999 16.3333 7.99999Z"
+                    ></path></svg></span>
+              </div>
+
+              <label class="switch">
+                <input type="checkbox" id="hardModeToggle" />
+                <span class="slider round">
+                  <span class="slider-label" id="sliderLabel">EASY</span>
+                </span>
+              </label>
+            </div>
+
+            <p>
+              This is <b>not a guessing game</b> — the word is already given.
+            </p>
+            Type the <b>தnglish</b> word in <b>தமிழ்</b> within 3 attempts.<br />
+          </div>
         </div>
 
         <div
@@ -1108,12 +1176,7 @@
             margin-bottom: 16px;
           "
         >
-          <h3 style="margin: 0">WORD OF THE DAY</h3>
-          <label class="switch" style="margin-left: 20px">
-            <input type="checkbox" id="hardModeToggle" />
-            <span class="slider round"></span>
-          </label>
-          <span class="mode-label" id="modeLabel">EASY</span>
+          <!-- <h3 style="margin: 0">WORD OF THE DAY</h3> -->
         </div>
 
         <div class="meaning">
@@ -1258,7 +1321,7 @@
         </div>
 
         <div class="key-row">
-          <div id="enter" class="key wide action">SUBMIT</div>
+          <div id="enter" class="key wide action">CHECK</div>
           <div class="key">ங</div>
           <div class="key">ஞ</div>
           <div class="key">ண</div>

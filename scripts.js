@@ -114,7 +114,7 @@ const keyboardWrapper = document.querySelector(".keyboard-wrapper");
 const tanglishEl = document.getElementById("tanglish");
 const toggleTanglishBtn = document.getElementById("toggleTanglishBtn");
 const hardModeToggle = document.getElementById("hardModeToggle");
-const modeLabel = document.getElementById("modeLabel");
+const sliderLabel = document.getElementById("sliderLabel");
 
 function updateDisplay() {
   tanglishEl.textContent = tanglishVisible ? word.tanglish : "??????";
@@ -1006,7 +1006,7 @@ hardModeToggle.addEventListener("change", () => {
   currentMode = newMode;
 
   // Update label
-  modeLabel.textContent = hardModeToggle.checked ? "HARD" : "EASY";
+  sliderLabel.textContent = hardModeToggle.checked ? "HARD" : "EASY";
 
   // Reset and reinitialize game
   initializeGame();
