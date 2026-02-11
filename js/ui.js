@@ -8,7 +8,7 @@ function openHowToPlay() {
     modal.classList.remove("hidden");
 }
 // Only auto-open for first-time players
-if (isFirstTimePlayer() || !getConsentStatus()) {
+if (getConsentStatus() !== "accepted") {
     openHowToPlay();
 }
 

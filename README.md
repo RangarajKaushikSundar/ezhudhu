@@ -7,3 +7,8 @@ A simple HTML game that helps people start typing Tamil. Play it live at [www.ta
 
 This is a static HTML app with no build step. Open index.html on your favourite browser.
 
+## How we use Cookies
+
+Browser's local storage is used for storing the player's progress. We will not be able to track the player's progress across different surfaces, eg: Different browser or device or incognito mode.
+
+Feature to login will come soon.

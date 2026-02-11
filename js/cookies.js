@@ -78,7 +78,7 @@ function initCookieBanner() {
     if (!banner) return;
 
     // If user already made a choice, hide banner
-    if (getConsentStatus() !== null) {
+    if (getConsentStatus() === "accepted") {
         banner.style.display = "none";
         return;
     }
