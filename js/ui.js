@@ -242,6 +242,115 @@ toggleTanglishBtn.addEventListener("click", () => {
     updateDisplay();
 });
 
+/* ---------- STATISTICS MODAL ---------- */
+const statsBtn = document.getElementById("statsBtn");
+const statsModal = document.getElementById("statsModal");
+const statsCloseBtn = statsModal.querySelector(".close-btn");
+
+statsBtn.addEventListener("click", () => {
+        renderStatsModal();
+        statsModal.classList.remove("hidden");
+});
+
+statsCloseBtn.addEventListener("click", () => {
+        statsModal.classList.add("hidden");
+});
+
+function renderStatsContent(statsContent) {
+    let history = [];
+    try {
+        history = getGameHistory();
+    } catch (e) {
+        history = [];
+    }
+    // Only count finished games
+    const finishedGames = history.filter(g => g.won !== undefined && g.attempts !== undefined);
+    const gamesPlayed = finishedGames.length;
+    const gamesWon = finishedGames.filter(g => g.won).length;
+    const winPct = gamesPlayed > 0 ? Math.round((gamesWon / gamesPlayed) * 100) : 0;
+
+    // Streaks: sorted by date, only count days with a win, streak breaks if a day is missed or a loss occurs
+    const byDate = [...finishedGames].sort((a, b) => a.date.localeCompare(b.date));
+    let maxStreak = 0, currentStreak = 0, lastDate = null;
+    let streak = 0;
+    for (let i = 0; i < byDate.length; ++i) {
+        const g = byDate[i];
+        if (!g.won) {
+            streak = 0;
+            continue;
+        }
+        if (lastDate) {
+            const prev = new Date(lastDate);
+            const curr = new Date(g.date);
+            const diff = (curr - prev) / (1000 * 60 * 60 * 24);
+            if (diff === 1) {
+                streak += 1;
+            } else {
+                streak = 1;
+            }
+        } else {
+            streak = 1;
+        }
+        if (streak > maxStreak) maxStreak = streak;
+        lastDate = g.date;
+    }
+    // Current streak: check from the end
+    currentStreak = 0;
+    if (byDate.length > 0) {
+        let i = byDate.length - 1;
+        let last = null;
+        while (i >= 0 && byDate[i].won) {
+            if (!last) {
+                currentStreak = 1;
+                last = byDate[i].date;
+            } else {
+                const prev = new Date(byDate[i].date);
+                const curr = new Date(last);
+                const diff = (curr - prev) / (1000 * 60 * 60 * 24);
+                if (diff === 1) {
+                    currentStreak += 1;
+                    last = byDate[i].date;
+                } else {
+                    break;
+                }
+            }
+            i--;
+        }
+    }
+
+    // Guess distribution: 1, 2, 3 attempts
+    const guessDist = [0, 0, 0];
+    finishedGames.forEach(g => {
+        if (g.won && g.attempts >= 1 && g.attempts <= 3) {
+            guessDist[g.attempts - 1] += 1;
+        }
+    });
+
+    // Render
+    statsContent.innerHTML = `
+      <div class="stats-row">
+        <div class="stats-item"><strong>${gamesPlayed}</strong>Played</div>
+        <div class="stats-item"><strong>${winPct}</strong>Win %</div>
+        <div class="stats-item"><strong>${currentStreak}</strong>Current Streak</div>
+        <div class="stats-item"><strong>${maxStreak}</strong>Max Streak</div>
+      </div>
+      <hr />
+      <h4>Guess Distribution</h4>
+      <div class="stats-barchart">
+        <div class="bar"><span class="bar-label">1</span><span class="bar-value">${guessDist[0]}</span></div>
+        <div class="bar"><span class="bar-label">2</span><span class="bar-value">${guessDist[1]}</span></div>
+        <div class="bar"><span class="bar-label">3</span><span class="bar-value">${guessDist[2]}</span></div>
+      </div>
+    `;
+}
+
+function renderStatsModal() {
+    const statsContent = document.getElementById("statsContent");
+    if (statsContent) {
+        renderStatsContent(statsContent);
+    }
+}
+
 /* ---------- GAME ---------- */
 document.getElementById("enter").onclick = () => {
     if (attempts >= 3) return;
@@ -316,15 +425,31 @@ function endGame(win, isRestore = false) {
     const popup = document.getElementById("myPopup");
     const closeBtn = document.querySelector(".resultmodalclose");
 
+
     // 1. Show the Modal only for live games, not on page restore
     if (!isRestore) {
         modal.style.display = "flex";
+        // Record game result in history
+        const today = new Date().toISOString().slice(0, 10);
+        recordGameResult({
+            date: today,
+            mode: currentMode,
+            won: win,
+            attempts: attempts,
+            guesses: guesses
+        });
+        // Render stats in resultmodal as well
+        const statsContent = document.querySelector("#resultmodal #resultStatsContent");
+        if (statsContent) renderStatsContent(statsContent);
     } else {
         // Show "View Results" button so user can open modal on demand
         const viewBtn = document.getElementById("viewResultsBtn");
         viewBtn.style.display = "block";
         viewBtn.onclick = () => {
             modal.style.display = "flex";
+            // Render stats in resultmodal as well
+            const statsContent = document.querySelector("#resultmodal #resultStatsContent");
+            if (statsContent) renderStatsContent(statsContent);
         };
     }
 

@@ -121,9 +121,78 @@ header p {
 }
 
 .header3 {
-  margin-left: 145px;
+  margin-left:80px;
   font-size: 1.17em;
   font-weight: bold;
+}
+
+.stats-btn {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 8px;
+  cursor: pointer;
+}
+.stats-btn .game-icon {
+  width: 28px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+#statsModal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+#statsModal .modal-content {
+  padding: 16px 20px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.stats-item {
+  text-align: center;
+  flex: 1;
+}
+.stats-item strong {
+  font-size: 22px;
+  display: block;
+}
+.stats-barchart {
+  margin-top: 18px;
+}
+.stats-barchart .bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.stats-barchart .bar-label {
+  width: 24px;
+  text-align: right;
+  margin-right: 8px;
+  font-size: 15px;
+}
+.stats-barchart .bar-value {
+  background: #888;
+  height: 18px;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  padding: 0 8px;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
 }
 
 /* Content */
@@ -536,6 +605,7 @@ button {
   --bg-color: #ffffff;
   --text-main: #1a1a1b;
   --text-secondary: #787c7e;
+  --dark-green: #28672a;
 }
 
 /* The Modal Background */
@@ -554,15 +624,18 @@ button {
   justify-content: center;
 }
 
+#viewresultbar {
+  margin-bottom: -3px;
+  padding-right: 6px;
+}
+
 /* Modal Content Box */
 .resultmodal-content {
   background-color: var(--bg-color);
   margin: auto;
   padding: 32px;
   border-radius: 16px;
-  /* Rounded corners */
-  width: 90%;
-  max-width: 400px;
+  
   /* Responsive width */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   position: relative;
@@ -919,9 +992,6 @@ button {
     min-height: 52px;
   }
 
-  .resultmodal-content {
-    width: 50vw;
-  }
 }
 
 /* Mobile phones (e.g., Pixel 7): compress significantly */

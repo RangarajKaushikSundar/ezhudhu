@@ -5,6 +5,7 @@ const STORAGE_KEYS = {
     VISITED: "ezhudhu_visited",
     PLAYED_PREFIX: "ezhudhu_played_",
     STATE_PREFIX: "ezhudhu_state_",
+    HISTORY: "ezhudhu_history",
 };
 
 function _todayStr() {
@@ -70,6 +71,29 @@ function loadGameState(mode) {
 
 function clearGameState(mode) {
     localStorage.removeItem(STORAGE_KEYS.STATE_PREFIX + mode);
+}
+
+/* -- Historical Game Data -- */
+function getGameHistory() {
+    if (!hasConsent()) return [];
+    const raw = localStorage.getItem(STORAGE_KEYS.HISTORY);
+    if (!raw) return [];
+    try {
+        return JSON.parse(raw);
+    } catch (e) {
+        return [];
+    }
+}
+
+function recordGameResult({ date, mode, won, attempts, guesses }) {
+    if (!hasConsent()) return;
+    const history = getGameHistory();
+    history.push({ date, mode, won, attempts, guesses });
+    localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
+}
+
+function clearGameHistory() {
+    localStorage.removeItem(STORAGE_KEYS.HISTORY);
 }
 
 /* -- GDPR Banner -- */

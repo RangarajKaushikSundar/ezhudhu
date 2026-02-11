@@ -24,7 +24,10 @@
       <div class="hint">
         <div>
           <div class="rules-row">
-            <div class="header3">
+            <button id="statsBtn" class="stats-btn" aria-label="View statistics" style="background: none; border: none; padding: 0; cursor: pointer;">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="4 4 24 24" width="28" class="game-icon" data-testid="icon-stats"><path fill="var(--color-tone-1)" d="M21.3332 14.6667V4H10.6665V12H2.6665V28H29.3332V14.6667H21.3332ZM13.3332 6.66667H18.6665V25.3333H13.3332V6.66667ZM5.33317 14.6667H10.6665V25.3333H5.33317V14.6667ZM26.6665 25.3333H21.3332V17.3333H26.6665V25.3333Z"></path></svg>
+            </button>
+            <div class="header3" style="display: flex; align-items: center; gap: 12px;">
               HOW TO PLAY
               <span id="rules"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" height="14"
                   viewBox="2 2 28 28" line-height="normal" width="14" class="game-icon" data-testid="icon-help">
@@ -84,7 +87,10 @@
       <div id="grid2" class="grid"></div>
       <div id="grid3" class="grid"></div>
 
-      <button id="viewResultsBtn" class="view-results-btn" style="display: none;">📊 View Results</button>
+      <button id="viewResultsBtn" class="view-results-btn" style="display: none;">
+        <svg id="viewresultbar" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="4 4 24 24" width="20" class="game-icon" data-testid="icon-stats"><path fill="white" d="M21.3332 14.6667V4H10.6665V12H2.6665V28H29.3332V14.6667H21.3332ZM13.3332 6.66667H18.6665V25.3333H13.3332V6.66667ZM5.33317 14.6667H10.6665V25.3333H5.33317V14.6667ZM26.6665 25.3333H21.3332V17.3333H26.6665V25.3333Z"></path></svg>
+        View Results
+      </button>
 
       <div id="resultmodal" class="resultmodal">
         <div class="resultmodal-content">
@@ -92,8 +98,10 @@
 
           <div class="modal-body">
             <div id="message" class="message"></div>
-
             <div id="share" class="share-grid"></div>
+            <div class="modal-content" id="resultStatsContent">
+              <!-- Stats will be rendered here -->
+            </div>
 
             <div class="action-container">
               <button id="shareBtn" class="shareBtn">
@@ -114,42 +122,53 @@
       </div>
     </div>
   </div>
-  <div id="howToPlayModal" class="modal-backdrop hidden">
-    <div class="modal">
-      <div class="modal-header">
-        <h2>Learn தமிழ் through தங்lish</h2>
-        <button class="close-btn" aria-label="Close">&times;</button>
-      </div>
-
-      <div class="modal-content">
-        <p class="mission-statement">
-          Can you speak Tamil but struggle to read or write it? This game
-          helps you bridge that gap by typing the words you already know.
-        </p>
-        <hr class="separator" />
-        <ul class="rules">
-          <li>You have <b>3 attempts</b>.</li>
-          <li>
-            <div class="tile green"></div>
-            Correct letter
-          </li>
-          <li>
-            <div class="tile red"></div>
-            Incorrect letter
-          </li>
-          <li>Click the <b>EASY/HARD</b> toggle to switch modes.</li>
-        </ul>
-        <div class="example-card">
-          <h4>Example</h4>
-          <img src="example.png" alt="Example" style="width: 330px; vertical-align: middle" />
+      <div id="statsModal" class="modal-backdrop hidden">
+        <div class="modal">
+          <div class="modal-header">
+            <h2>Statistics</h2>
+            <button class="close-btn" aria-label="Close">&times;</button>
+          </div>
+          <div class="modal-content" id="statsContent">
+            <!-- Stats will be rendered here -->
+          </div>
         </div>
       </div>
+      <div id="howToPlayModal" class="modal-backdrop hidden">
+        <div class="modal">
+          <div class="modal-header">
+            <h2>Learn தமிழ் through தங்lish</h2>
+            <button class="close-btn" aria-label="Close">&times;</button>
+          </div>
 
-      <div class="modal-footer">
-        <button class="primary-btn">Okay!</button>
+          <div class="modal-content">
+            <p class="mission-statement">
+              Can you speak Tamil but struggle to read or write it? This game
+              helps you bridge that gap by typing the words you already know.
+            </p>
+            <hr class="separator" />
+            <ul class="rules">
+              <li>You have <b>3 attempts</b>.</li>
+              <li>
+                <div class="tile green"></div>
+                Correct letter
+              </li>
+              <li>
+                <div class="tile red"></div>
+                Incorrect letter
+              </li>
+              <li>Click the <b>EASY/HARD</b> toggle to switch modes.</li>
+            </ul>
+            <div class="example-card">
+              <h4>Example</h4>
+              <img src="example.png" alt="Example" style="width: 330px; vertical-align: middle" />
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button class="primary-btn">Okay!</button>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
   <section class="keyboard-wrapper">
     <div class="keyboard">
