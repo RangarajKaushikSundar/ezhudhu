@@ -1,1443 +1,253 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" /> 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil&display=swap"
-      rel="stylesheet"
-    />
-    <title>தமிழ் PAZHAGU - Daily Challenge</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      /* ---------- RESET / BASE ---------- */
 
-      body {
-        margin: 0;
-
-        font-family: Tahoma, "Noto Sans Tamil", sans-serif;
-
-        background: #fafafa;
-
-        text-align: center;
-
-        padding-bottom: 280px;
-
-        /* space for keyboard */
-      }
-
-      header {
-        text-align: center;
-
-        padding: 20px 10px 6px;
-
-        border: 2px solid #ddd;
-
-        border-radius: 8px;
-
-        margin: 10px;
-
-        background: #fff;
-
-        color: black;
-      }
-
-      header h1 {
-        margin: 0;
-
-        font-size: 36px;
-
-        letter-spacing: 2px;
-      }
-
-      header p {
-        margin: 4px 0 11px;
-
-        color: #555;
-      }
-
-      /* Modal Styles */
-
-      /* Backdrop */
-
-      .modal-backdrop {
-        position: fixed;
-
-        inset: 0;
-
-        background: rgba(0, 0, 0, 0.45);
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        z-index: 1000;
-      }
-
-      .modal-backdrop.hidden {
-        display: none;
-      }
-
-      /* Modal box */
-
-      .modal {
-        background: #fff;
-
-        width: 90%;
-
-        max-width: 420px;
-
-        border-radius: 16px;
-
-        text-align: left;
-
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-
-        overflow: hidden;
-
-        font-family: Tahoma, "Noto Sans Tamil", sans-serif;
-      }
-
-      /* Header */
-
-      .modal-header {
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: left;
-
-        padding: 16px 20px;
-
-        border-bottom: 1px solid #eee;
-      }
-
-      .modal-header h2 {
-        margin: 8px 2px;
-
-        font-size: 20px;
-      }
-
-      .close-btn {
-        background: none;
-
-        border: none;
-
-        padding: 0px 14px;
-
-        font-size: 26px;
-
-        cursor: pointer;
-
-        color: #666;
-      }
-
-      .header3 {
-        margin-left: 145px;
-        font-size: 1.17em;
-        font-weight: bold;
-      }
-
-      /* Content */
-
-      .modal-content {
-        padding: 16px 20px;
-
-        font-size: 15px;
-
-        line-height: 1.5;
-      }
-
-      .rules {
-        padding-left: 18px;
-
-        margin: 0 0 16px;
-      }
-
-      .rules li {
-        margin-bottom: 8px;
-      }
-
-      /* Legend */
-
-      .legend {
-        display: flex;
-
-        gap: 16px;
-
-        margin-bottom: 16px;
-
-        font-size: 14px;
-      }
-
-      .legend div {
-        display: flex;
-
-        align-items: center;
-
-        gap: 6px;
-      }
-
-      .tile {
-        width: 18px;
-
-        height: 18px;
-
-        border-radius: 4px;
-
-        display: inline-block;
-      }
-
-      .tile.green {
-        background: #4caf50;
-      }
-
-      .tile.red {
-        background: #f44336;
-      }
-
-      /* Example */
-
-      .example {
-        background: #f7f7f7;
-
-        border-radius: 12px;
-
-        padding: 12px;
-      }
-
-      .example h3 {
-        margin: 0 0 6px;
-
-        font-size: 16px;
-      }
-
-      .rules-row {
-        display: flex;
-        align-items: center;
-      }
-
-      .switch {
-        margin-left: auto;
-        margin-right: 20px;
-      }
-      /* Footer */
-
-      .modal-footer {
-        padding: 12px 20px 16px;
-      }
-
-      .primary-btn {
-        width: 100%;
-
-        padding: 10px 14px;
-
-        background: #4caf50;
-
-        color: white;
-
-        border: none;
-
-        border-radius: 10px;
-
-        font-size: 16px;
-
-        cursor: pointer;
-      }
-
-      .primary-btn:hover {
-        background: #43a047;
-      }
-
-      /* ---------- BOARD ---------- */
-
-      .board-wrapper {
-        display: flex;
-
-        justify-content: center;
-      }
-
-      .board {
-        width: 100%;
-
-        max-width: 420px;
-      }
-
-      .hint {
-        font-size: 14px;
-        margin-bottom: 12px;
-      }
-
-      .meaning {
-        margin-bottom: 12px;
-      }
-
-      .grid {
-        display: flex;
-
-        justify-content: center;
-
-        gap: 10px;
-
-        margin: 20px 0;
-      }
-
-      /* ---------- TILE ---------- */
-
-      .box {
-        width: 52px;
-
-        height: 52px;
-
-        border: 2px solid #ccc;
-
-        border-radius: 8px;
-
-        font-size: 24px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        background: #fff;
-
-        transform-style: preserve-3d;
-      }
-
-      .correct {
-        background: #4caf50;
-
-        color: #fff;
-
-        border: none;
-      }
-
-      .wrong {
-        background: #f44336;
-
-        color: #fff;
-
-        border: none;
-      }
-
-      /* ---------- ANIMATIONS ---------- */
-
-      @keyframes flip {
-        0% {
-          transform: rotateX(0);
-        }
-
-        50% {
-          transform: rotateX(90deg);
-        }
-
-        100% {
-          transform: rotateX(0);
-        }
-      }
-
-      @keyframes shake {
-        0%,
-        100% {
-          transform: translateX(0);
-        }
-
-        25% {
-          transform: translateX(-5px);
-        }
-
-        75% {
-          transform: translateX(5px);
-        }
-      }
-
-      .flip {
-        animation: flip 0.6s ease forwards;
-      }
-
-      .shake {
-        animation: shake 0.4s ease;
-      }
-
-      /* ---------- INPUT ---------- */
-
-      textarea {
-        width: 100%;
-
-        font-size: 18px;
-
-        padding: 10px;
-
-        border-radius: 8px;
-
-        border: 1px solid #ccc;
-      }
-
-      button {
-        margin-top: 10px;
-
-        padding: 12px 16px;
-
-        font-size: 16px;
-
-        cursor: pointer;
-
-        border-radius: 8px;
-
-        border: none;
-
-        background: #000;
-
-        color: #fff;
-      }
-
-      /* ---------- KEYBOARD ---------- */
-
-      .keyboard-wrapper {
-        position: fixed;
-
-        bottom: 0;
-
-        left: 0;
-
-        width: 100%;
-
-        background: #eaecef;
-
-        padding: 8px 6px 12px;
-
-        z-index: 100;
-      }
-
-      .keyboard {
-        max-width: 760px;
-
-        margin: 0 auto;
-      }
-
-      .key-row {
-        display: flex;
-
-        justify-content: center;
-
-        gap: 4px;
-
-        margin-bottom: 6px;
-      }
-
-      .key {
-        flex: 1 1 0;
-
-        min-width: 0;
-
-        padding: 10px 4px;
-
-        background: #dfe3e8;
-
-        border-radius: 6px;
-
-        font-size: 16px;
-
-        user-select: none;
-
-        cursor: pointer;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-      }
-
-      .key.wide {
-        flex: 2;
-      }
-
-      .key.action {
-        background: #c7ccd1;
-      }
-
-      /* ---------- SHARE ---------- */
-
-      .message {
-        margin-top: 12px;
-
-        font-weight: bold;
-      }
-
-      .share {
-        white-space: pre;
-
-        margin-top: 10px;
-
-        font-size: 14px;
-      }
-
-      .shareBtn {
-        margin-top: 8px;
-
-        display: none;
-
-        background-color: #4caf50;
-
-        color: white;
-      }
-
-      /** icons **/
-
-      .shareicon {
-        font-weight: bold;
-
-        position: relative;
-      }
-
-      .shareicon:before {
-        content: ".";
-
-        font-size: 2.2em;
-
-        position: absolute;
-
-        bottom: -2.5px;
-
-        left: -4px;
-      }
-
-      .shareicon:after {
-        content: ":";
-
-        font-size: 2em;
-
-        position: absolute;
-
-        bottom: -6px;
-
-        right: -6px;
-      }
-
-      /* ---------- RESULT MODAL ---------- */
-
-      :root {
-        --success-color: #6aaa64;
-        --error-color: #e74c3c;
-        --bg-color: #ffffff;
-        --text-main: #1a1a1b;
-        --text-secondary: #787c7e;
-      }
-
-      /* The Modal Background */
-      .resultmodal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(2px); /* Blurs the game behind it */
-        display: flex; /* Using flex to center */
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* Modal Content Box */
-      .resultmodal-content {
-        background-color: var(--bg-color);
-        margin: auto;
-        padding: 32px;
-        border-radius: 16px; /* Rounded corners */
-        width: 90%;
-        max-width: 400px; /* Responsive width */
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        position: relative;
-        text-align: center;
-        font-family: Tahoma, "Noto Sans Tamil", sans-serif;
-
-        /* Entrance Animation */
-        animation: modalSlideUp 0.3s ease-out;
-      }
-
-      @keyframes modalSlideUp {
-        from {
-          transform: translateY(20px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      /* Close Button */
-      .resultmodalclose {
-        position: absolute;
-        right: 16px;
-        top: 12px;
-        color: var(--text-secondary);
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: color 0.2s;
-      }
-
-      .resultmodalclose:hover {
-        color: var(--text-main);
-      }
-
-      /* Message Styling */
-      .message {
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-        line-height: 1.4;
-      }
-
-      /* Styles for when game is won/lost (apply via JS) */
-      .msg-success {
-        color: var(--success-color);
-      }
-      .msg-fail {
-        color: var(--error-color);
-      }
-
-      /* The share-grid container */
-      .share-grid {
-        font-size: 20px;
-        letter-spacing: 2px;
-        margin: 20px 0;
-        line-height: 1.2;
-      }
-
-      /* Share Button */
-      .shareBtn {
-        background-color: var(--success-color);
-        color: white;
-        border: none;
-        padding: 12px 32px;
-        font-size: 18px;
-        font-weight: bold;
-        border-radius: 8px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        margin: 0 auto;
-        width: 100%;
-        transition:
-          transform 0.1s,
-          background-color 0.2s;
-      }
-
-      .shareBtn:hover {
-        background-color: #538d4e;
-        transform: scale(1.02);
-      }
-
-      .shareBtn:active {
-        transform: scale(0.98);
-      }
-
-      /* Popup Text */
-      /* Enhanced Popup styling */
-      .popuptext {
-        visibility: hidden;
-        opacity: 0;
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 8px 12px;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%; /* Position above the button */
-        left: 50%;
-        transform: translateX(-50%);
-        transition:
-          opacity 0.4s ease,
-          transform 0.4s ease;
-        font-size: 14px;
-        pointer-events: none; /* Prevents it from interfering with clicks */
-      }
-
-      /* The class we'll toggle with JS */
-      .popuptext.show {
-        visibility: visible;
-        opacity: 1;
-        transform: translateX(-50%) translateY(-10px); /* Slight float up effect */
-      }
-
-      /** Popup **/
-
-      /* Popup container - can be anything you want */
-
-      .popup {
-        position: relative;
-
-        display: inline-block;
-
-        cursor: pointer;
-
-        -webkit-user-select: none;
-
-        -moz-user-select: none;
-
-        -ms-user-select: none;
-
-        user-select: none;
-      }
-
-      /* The actual popup */
-
-      .popup .popuptext {
-        visibility: hidden;
-
-        width: 160px;
-
-        background-color: #555;
-
-        color: #fff;
-
-        text-align: center;
-
-        border-radius: 6px;
-
-        padding: 8px 0;
-
-        position: absolute;
-
-        z-index: 1;
-
-        bottom: 125%;
-
-        left: 50%;
-
-        margin-left: -80px;
-      }
-
-      /* Popup arrow */
-
-      .popup .popuptext::after {
-        content: "";
-
-        position: absolute;
-
-        top: 100%;
-
-        left: 50%;
-
-        margin-left: -5px;
-
-        border-width: 5px;
-
-        border-style: solid;
-
-        border-color: #555 transparent transparent transparent;
-      }
-
-      /* Toggle this class - hide and show the popup */
-
-      .popup .show {
-        visibility: visible;
-
-        -webkit-animation: fadeIn 1s;
-
-        animation: fadeIn 1s;
-      }
-
-      /* Add animation (fade in the popup) */
-
-      @-webkit-keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-
-        to {
-          opacity: 1;
-        }
-      }
-
-      /* ---------- MODE BUTTONS ---------- */
-
-      .mode-buttons {
-        display: flex;
-
-        gap: 10px;
-
-        justify-content: center;
-
-        margin: 10px;
-
-        flex-wrap: wrap;
-      }
-
-      .mode-btn {
-        border-radius: 8px;
-
-        border: 2px solid #000;
-
-        background: #fff;
-
-        color: #000;
-
-        cursor: pointer;
-
-        font-weight: bold;
-
-        transition: all 0.3s ease;
-      }
-
-      .mode-btn.active {
-        background: #000;
-
-        color: #fff;
-      }
-
-      .mode-btn:hover {
-        transform: scale(1.05);
-      }
-
-      .toggle-tanglish-btn {
-        font-size: 14px;
-
-        background: white;
-
-        border: none;
-
-        border-radius: 6px;
-
-        cursor: pointer;
-
-        margin-top: 10px;
-
-        display: none;
-      }
-
-      .toggle-tanglish-btn.visible {
-        display: block;
-      }
-
-      /* ---------- RESPONSIVE ADJUSTMENTS ---------- */
-
-      /* Tablets/small laptops: slightly compact */
-
-      @media (max-width: 500px) {
-        .keyboard-wrapper {
-          padding: 8px 4px 10px;
-        }
-
-        .keyboard {
-          padding: 0 4px;
-        }
-
-        .key {
-          padding: 8px 3px;
-
-          font-size: 14px;
-        }
-
-        .key-row {
-          gap: 3px;
-
-          margin-bottom: 4px;
-        }
-      }
-
-      /* Mobile phones (e.g., Pixel 7): compress significantly */
-
-      @media (max-width: 420px) {
-        body {
-          padding-bottom: 320px;
-
-          /* ensure space for 250px keyboard + margin */
-        }
-
-        .keyboard-wrapper {
-          padding: 6px 3px 8px;
-
-          height: 250px;
-
-          /* fixed height for mobile */
-
-          box-sizing: border-box;
-        }
-
-        .keyboard {
-          padding: 0 2px;
-
-          height: 100%;
-
-          display: flex;
-
-          flex-direction: column;
-
-          justify-content: center;
-        }
-
-        .key-row {
-          gap: 4px;
-
-          margin-bottom: 6px;
-        }
-
-        .key {
-          padding: 2px 2px;
-
-          font-size: 13px;
-
-          min-height: 52px;
-        }
-
-        .resultmodal-content {
-          width: 50vw;
-        }
-      }
-
-      /* Mobile phones (e.g., Pixel 7): compress significantly */
-
-      @media (max-width: 390px) {
-        body {
-          padding-bottom: 320px;
-
-          /* ensure space for 250px keyboard + margin */
-        }
-
-        .keyboard-wrapper {
-          padding: 6px 3px 8px;
-
-          height: 200px;
-
-          /* fixed height for mobile */
-
-          box-sizing: border-box;
-        }
-
-        .keyboard {
-          padding: 0px;
-
-          height: 100%;
-
-          display: flex;
-
-          flex-direction: column;
-
-          justify-content: center;
-        }
-
-        .key-row {
-          gap: 4px;
-
-          margin-bottom: 6px;
-        }
-
-        .key {
-          padding: 0px;
-
-          font-size: 12px;
-
-          min-height: 43px;
-        }
-      }
-
-      /** Column **/
-
-      .row {
-        display: flex;
-
-        flex-direction: row;
-
-        flex-wrap: wrap;
-
-        width: 100%;
-      }
-
-      .column h4 {
-        align-self: flex-start;
-
-        color: gray;
-
-        font-size: 14px;
-
-        margin-left: 10px;
-      }
-
-      .column span {
-        align-self: flex-end;
-
-        font-size: 20px;
-
-        padding-right: 10px;
-
-        margin-right: 10px;
-      }
-
-      .column strong {
-        font-size: 20px;
-      }
-
-      .column {
-        display: flex;
-
-        flex-direction: column;
-
-        flex-basis: 100%;
-
-        flex: 1;
-
-        height: auto;
-
-        background: #fff;
-
-        color: #000;
-      }
-
-      /* ---------- TOGGLE SWITCH ---------- */
-
-      .switch {
-        position: relative;
-
-        display: inline-block;
-
-        width: 50px;
-
-        height: 24px;
-      }
-
-      .switch input {
-        opacity: 0;
-
-        width: 0;
-
-        height: 0;
-      }
-
-      .slider {
-        position: absolute;
-
-        cursor: pointer;
-
-        top: 0;
-
-        left: 0;
-
-        right: 0;
-
-        bottom: 0;
-
-        background-color: #ccc;
-
-        transition: 0.4s;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-      }
-
-      .slider:before {
-        position: absolute;
-
-        content: "";
-
-        height: 18px;
-
-        width: 18px;
-
-        left: 3px;
-
-        bottom: 3px;
-
-        background-color: white;
-
-        transition: 0.4s;
-      }
-
-      input:checked + .slider {
-        background-color: #2196f3;
-      }
-
-      input:checked + .slider:before {
-        transform: translateX(26px);
-      }
-
-      .slider.round {
-        border-radius: 24px;
-      }
-
-      .slider.round:before {
-        border-radius: 50%;
-      }
-
-      .mode-label {
-        margin-left: 8px;
-
-        font-weight: bold;
-
-        font-size: 16px;
-
-        vertical-align: middle;
-      }
-
-      /* Label text inside slider */
-      .slider-label {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 11px;
-        font-weight: bold;
-        color: #000;
-        pointer-events: none;
-        user-select: none;
-      }
-
-      input:checked + .slider .slider-label {
-        color: #fff;
-      }
-
-      /** GLITCH EFFECT **/
-
-      :root {
-        --glow-color: black;
-      }
-
-      /* Flickering CRT Screen effect */
-
-      .screen-container {
-        position: relative;
-
-        animation: flicker 0.15s infinite;
-
-        height: 40px;
-      }
-
-      .glitch-container {
-        font-family: "Courier New", Courier, monospace;
-
-        color: var(--glow-color);
-
-        font-size: 2rem;
-
-        font-weight: bold;
-
-        letter-spacing: 8px;
-
-        position: relative;
-
-        text-transform: uppercase;
-      }
-
-      @keyframes flicker {
-        0% {
-          opacity: 0.97;
-        }
-
-        50% {
-          opacity: 1;
-        }
-
-        100% {
-          opacity: 0.98;
-        }
-      }
-
-      /* Subtle distortion */
-
-      @keyframes jitter {
-        0% {
-          transform: skew(0deg);
-        }
-
-        10% {
-          transform: skew(1deg);
-        }
-
-        20% {
-          transform: skew(-1deg);
-        }
-
-        30% {
-          transform: skew(0.5deg);
-        }
-
-        100% {
-          transform: skew(0deg);
-        }
-      }
-
-      .is-glitching {
-        animation: jitter 0.1s infinite;
-      }
-    </style>
-  </head>
-
-  <body>
-    <header>
-      <h1>தமிழ்</h1>
-      <div class="screen-container">
-        <div class="glitch-container" id="glitch-text">PAZHAGU</div>
-      </div>
-      <p>Daily Challenge</p>
-    </header>
-
-    <div class="board-wrapper">
-      <div class="board">
-        <div class="hint">
-          <div>
-            <div class="rules-row">
-              <div class="header3">
-                HOW TO PLAY
-                <span id="rules"
-                  ><svg
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="14"
-                    viewBox="2 2 28 28"
-                    line-height="normal"
-                    width="14"
-                    class="game-icon"
-                    data-testid="icon-help"
-                  >
-                    <path
-                      fill="var(--color-tone-1)"
-                      d="M15 24H17.6667V21.3333H15V24ZM16.3333 2.66666C8.97333 2.66666 3 8.63999 3 16C3 23.36 8.97333 29.3333 16.3333 29.3333C23.6933 29.3333 29.6667 23.36 29.6667 16C29.6667 8.63999 23.6933 2.66666 16.3333 2.66666ZM16.3333 26.6667C10.4533 26.6667 5.66667 21.88 5.66667 16C5.66667 10.12 10.4533 5.33332 16.3333 5.33332C22.2133 5.33332 27 10.12 27 16C27 21.88 22.2133 26.6667 16.3333 26.6667ZM16.3333 7.99999C13.3867 7.99999 11 10.3867 11 13.3333H13.6667C13.6667 11.8667 14.8667 10.6667 16.3333 10.6667C17.8 10.6667 19 11.8667 19 13.3333C19 16 15 15.6667 15 20H17.6667C17.6667 17 21.6667 16.6667 21.6667 13.3333C21.6667 10.3867 19.28 7.99999 16.3333 7.99999Z"
-                    ></path>
-                  </svg>
-                </span>
-              </div>
-
-              <label class="switch">
-                <input type="checkbox" id="hardModeToggle" />
-                <span class="slider round">
-                  <span class="slider-label" id="sliderLabel">EASY</span>
-                </span>
-              </label>
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil&display=swap" rel="stylesheet" />
+  <title>தமிழ் PAZHAGU - Daily Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+
+<body>
+  <header>
+    <h1>தமிழ்</h1>
+    <div class="screen-container">
+      <div class="glitch-container" id="glitch-text">PAZHAGU</div>
+    </div>
+    <p>Daily Challenge</p>
+  </header>
+
+  <div class="board-wrapper">
+    <div class="board">
+      <div class="hint">
+        <div>
+          <div class="rules-row">
+            <div class="header3">
+              HOW TO PLAY
+              <span id="rules"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" height="14"
+                  viewBox="2 2 28 28" line-height="normal" width="14" class="game-icon" data-testid="icon-help">
+                  <path fill="var(--color-tone-1)"
+                    d="M15 24H17.6667V21.3333H15V24ZM16.3333 2.66666C8.97333 2.66666 3 8.63999 3 16C3 23.36 8.97333 29.3333 16.3333 29.3333C23.6933 29.3333 29.6667 23.36 29.6667 16C29.6667 8.63999 23.6933 2.66666 16.3333 2.66666ZM16.3333 26.6667C10.4533 26.6667 5.66667 21.88 5.66667 16C5.66667 10.12 10.4533 5.33332 16.3333 5.33332C22.2133 5.33332 27 10.12 27 16C27 21.88 22.2133 26.6667 16.3333 26.6667ZM16.3333 7.99999C13.3867 7.99999 11 10.3867 11 13.3333H13.6667C13.6667 11.8667 14.8667 10.6667 16.3333 10.6667C17.8 10.6667 19 11.8667 19 13.3333C19 16 15 15.6667 15 20H17.6667C17.6667 17 21.6667 16.6667 21.6667 13.3333C21.6667 10.3867 19.28 7.99999 16.3333 7.99999Z">
+                  </path>
+                </svg>
+              </span>
             </div>
 
-            <p id="game-rule">
-              This is <u><b>not a guessing game</b></u> — the word is already
-              given.
-            </p>
-            Type the <b>தங்lish</b> word in <b>தமிழ்</b> within 3 attempts.<br />
+            <label class="switch">
+              <input type="checkbox" id="hardModeToggle" />
+              <span class="slider round">
+                <span class="slider-label" id="sliderLabel">EASY</span>
+              </span>
+            </label>
           </div>
-        </div>
 
-        <div
-          style="
+          <p id="game-rule">
+            This is <u><b>not a guessing game</b></u> — the word is already
+            given.
+          </p>
+          <p></p>Type the <b>தங்lish</b> word in <b>தமிழ்</b> within 3 attempts.</p>
+        </div>
+      </div>
+
+      <div style="
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 16px;
-          "
-        ></div>
+          "></div>
 
-        <div class="meaning">
-          <div class="row">
-            <div class="column">
-              <div class="row">
-                <div class="column">
-                  <h4>தங்lish</h4>
-                </div>
-                <div class="column">
-                  <button class="toggle-tanglish-btn" id="toggleTanglishBtn">
-                    <img
-                      src="eye.png"
-                      alt="Show Tanglish"
-                      style="width: 16px; vertical-align: middle"
-                    />
-                  </button>
-                </div>
+      <div class="meaning">
+        <div class="row">
+          <div class="column">
+            <div class="row">
+              <div class="column">
+                <h4>தங்lish</h4>
               </div>
-              <strong id="tanglish"></strong><br />
-            </div>
-            <div class="column">
-              <h4>English Meaning</h4>
-              <span id="meaning"></span>
-            </div>
-          </div>
-        </div>
-
-        <div id="grid1" class="grid"></div>
-        <div id="grid2" class="grid"></div>
-        <div id="grid3" class="grid"></div>
-
-        <div id="resultmodal" class="resultmodal">
-          <div class="resultmodal-content">
-            <span class="resultmodalclose">&times;</span>
-
-            <div class="modal-body">
-              <div id="message" class="message"></div>
-
-              <div id="share" class="share-grid"></div>
-
-              <div class="action-container">
-                <button id="shareBtn" class="shareBtn">
-                  <span>Share</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="18" cy="5" r="3"></circle>
-                    <circle cx="6" cy="12" r="3"></circle>
-                    <circle cx="18" cy="19" r="3"></circle>
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                  </svg>
+              <div class="column">
+                <button class="toggle-tanglish-btn" id="toggleTanglishBtn">
+                  <img src="eye.png" alt="Show Tanglish" style="width: 16px; vertical-align: middle" />
                 </button>
-                <span class="popuptext" id="myPopup">Copied to clipboard!</span>
               </div>
+            </div>
+            <strong id="tanglish"></strong><br />
+          </div>
+          <div class="column">
+            <h4>English Meaning</h4>
+            <span id="meaning"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="grid1" class="grid"></div>
+      <div id="grid2" class="grid"></div>
+      <div id="grid3" class="grid"></div>
+
+      <button id="viewResultsBtn" class="view-results-btn" style="display: none;">📊 View Results</button>
+
+      <div id="resultmodal" class="resultmodal">
+        <div class="resultmodal-content">
+          <span class="resultmodalclose">&times;</span>
+
+          <div class="modal-body">
+            <div id="message" class="message"></div>
+
+            <div id="share" class="share-grid"></div>
+
+            <div class="action-container">
+              <button id="shareBtn" class="shareBtn">
+                <span>Share</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+              </button>
+              <span class="popuptext" id="myPopup">Copied to clipboard!</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div id="howToPlayModal" class="modal-backdrop">
-      <div class="modal">
-        <div class="modal-header">
-          <h2>Learn தமிழ் through தங்lish</h2>
-          <button class="close-btn" aria-label="Close">&times;</button>
-        </div>
+  </div>
+  <div id="howToPlayModal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Learn தமிழ் through தங்lish</h2>
+        <button class="close-btn" aria-label="Close">&times;</button>
+      </div>
 
-        <div class="modal-content">
-          <p class="mission-statement">
-            Can you speak Tamil but struggle to read or write it? This game
-            helps you bridge that gap by typing the words you already know.
-          </p>
-          <hr class="separator" />
-          <ul class="rules">
-            <li>You have <b>3 attempts</b>.</li>
-            <li>
-              <div class="tile green"></div>
-              Correct letter
-            </li>
-            <li>
-              <div class="tile red"></div>
-              Incorrect letter
-            </li>
-            <li>Click the <b>EASY/HARD</b> toggle to switch modes.</li>
-          </ul>
-          <div class="example-card">
-            <h4>Example</h4>
-            <img
-              src="example.png"
-              alt="Example"
-              style="width: 330px; vertical-align: middle"
-            />
-          </div>
+      <div class="modal-content">
+        <p class="mission-statement">
+          Can you speak Tamil but struggle to read or write it? This game
+          helps you bridge that gap by typing the words you already know.
+        </p>
+        <hr class="separator" />
+        <ul class="rules">
+          <li>You have <b>3 attempts</b>.</li>
+          <li>
+            <div class="tile green"></div>
+            Correct letter
+          </li>
+          <li>
+            <div class="tile red"></div>
+            Incorrect letter
+          </li>
+          <li>Click the <b>EASY/HARD</b> toggle to switch modes.</li>
+        </ul>
+        <div class="example-card">
+          <h4>Example</h4>
+          <img src="example.png" alt="Example" style="width: 330px; vertical-align: middle" />
         </div>
+      </div>
 
-        <div class="modal-footer">
-          <button class="primary-btn">Okay!</button>
-        </div>
+      <div class="modal-footer">
+        <button class="primary-btn">Okay!</button>
       </div>
     </div>
+  </div>
 
-    <section class="keyboard-wrapper">
-      <div class="keyboard">
-        <style>
-          /* Disabled key style for vowel modifiers */
-          .key.disabled {
-            opacity: 0.35;
-            pointer-events: none;
-            filter: grayscale(100%);
-          }
-        </style>
-        <div class="key-row">
-          <div class="key">அ</div>
-          <div class="key">ஆ</div>
-          <div class="key">இ</div>
-          <div class="key">ஈ</div>
-          <div class="key">உ</div>
-          <div class="key">ஊ</div>
-          <div class="key">எ</div>
-          <div class="key">ஏ</div>
-          <div class="key">ஐ</div>
-          <div class="key">ஒ</div>
-          <div class="key">ஓ</div>
-          <div class="key">ஔ</div>
-        </div>
-
-        <div id="vowel-row" class="key-row">
-          <div class="key">ா</div>
-          <div class="key">ி</div>
-          <div class="key">ீ</div>
-          <div class="key">ு</div>
-          <div class="key">ூ</div>
-          <div class="key">ெ</div>
-          <div class="key">ொ</div>
-          <div class="key">ை</div>
-          <div class="key">ே</div>
-          <div class="key">ோ</div>
-          <div class="key">ௌ</div>
-          <div class="key">்</div>
-        </div>
-
-        <div class="key-row">
-          <div class="key">க</div>
-          <div class="key">ச</div>
-          <div class="key">ட</div>
-          <div class="key">த</div>
-          <div class="key">ப</div>
-          <div class="key">ற</div>
-          <div class="key">ய</div>
-          <div class="key">ர</div>
-          <div class="key">ல</div>
-          <div class="key">வ</div>
-          <div class="key">ழ</div>
-          <div class="key">ள</div>
-        </div>
-
-        <div class="key-row">
-          <div id="enter" class="key wide action">CHECK</div>
-          <div class="key">ங</div>
-          <div class="key">ஞ</div>
-          <div class="key">ண</div>
-          <div class="key">ந</div>
-          <div class="key">ம</div>
-          <div class="key">ன</div>
-          <div class="key">ஜ</div>
-          <div class="key">ஷ</div>
-          <div class="key">ஸ</div>
-          <div class="key">ஹ</div>
-          <div id="back" class="key wide action">⌫</div>
-        </div>
+  <section class="keyboard-wrapper">
+    <div class="keyboard">
+      <style>
+        /* Disabled key style for vowel modifiers */
+        .key.disabled {
+          opacity: 0.35;
+          pointer-events: none;
+          filter: grayscale(100%);
+        }
+      </style>
+      <div class="key-row">
+        <div class="key">அ</div>
+        <div class="key">ஆ</div>
+        <div class="key">இ</div>
+        <div class="key">ஈ</div>
+        <div class="key">உ</div>
+        <div class="key">ஊ</div>
+        <div class="key">எ</div>
+        <div class="key">ஏ</div>
+        <div class="key">ஐ</div>
+        <div class="key">ஒ</div>
+        <div class="key">ஓ</div>
+        <div class="key">ஔ</div>
       </div>
-    </section>
 
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-4HFTMPY2L9"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-4HFTMPY2L9");
-    </script>
-    <script src="scripts.js"></script>
-  </body>
+      <div id="vowel-row" class="key-row">
+        <div class="key">ா</div>
+        <div class="key">ி</div>
+        <div class="key">ீ</div>
+        <div class="key">ு</div>
+        <div class="key">ூ</div>
+        <div class="key">ெ</div>
+        <div class="key">ொ</div>
+        <div class="key">ை</div>
+        <div class="key">ே</div>
+        <div class="key">ோ</div>
+        <div class="key">ௌ</div>
+        <div class="key">்</div>
+      </div>
+
+      <div class="key-row">
+        <div class="key">க</div>
+        <div class="key">ச</div>
+        <div class="key">ட</div>
+        <div class="key">த</div>
+        <div class="key">ப</div>
+        <div class="key">ற</div>
+        <div class="key">ய</div>
+        <div class="key">ர</div>
+        <div class="key">ல</div>
+        <div class="key">வ</div>
+        <div class="key">ழ</div>
+        <div class="key">ள</div>
+      </div>
+
+      <div class="key-row">
+        <div id="enter" class="key wide action">CHECK</div>
+        <div class="key">ங</div>
+        <div class="key">ஞ</div>
+        <div class="key">ண</div>
+        <div class="key">ந</div>
+        <div class="key">ம</div>
+        <div class="key">ன</div>
+        <div class="key">ஜ</div>
+        <div class="key">ஷ</div>
+        <div class="key">ஸ</div>
+        <div class="key">ஹ</div>
+        <div id="back" class="key wide action">⌫</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GDPR Cookie Consent Banner -->
+  <div id="gdpr-banner" class="gdpr-banner" style="display: none;">
+    <div class="gdpr-content">
+      <p>🍪 We use cookies to remember your progress and detect returning players. No personal data is shared.</p>
+      <div class="gdpr-actions">
+        <button id="gdpr-accept" class="gdpr-btn gdpr-accept">Accept</button>
+        <button id="gdpr-decline" class="gdpr-btn gdpr-decline">Decline</button>
+      </div>
+    </div>
+  </div>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HFTMPY2L9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-4HFTMPY2L9");
+  </script>
+  <script src="js/cookies.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
 </html>
