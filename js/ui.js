@@ -11,6 +11,12 @@ function openHowToPlay() {
 if (getConsentStatus() !== "accepted") {
     openHowToPlay();
 }
+// On page load, retroactively update HISTORY for completed puzzles
+['easy', 'hard'].forEach(mode => {
+    if (typeof updateHistoryForCompletedToday === 'function') {
+        updateHistoryForCompletedToday(mode);
+    }
+});
 
 // Close modal
 function closeHowToPlay() {
