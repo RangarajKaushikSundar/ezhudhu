@@ -44,36 +44,6 @@ function hasPlayedToday(mode) {
     if (!hasConsent()) return false;
     return localStorage.getItem(STORAGE_KEYS.PLAYED_PREFIX + mode) === _todayStr();
 }
-// Utility to retroactively update HISTORY for today's completed puzzle
-function updateHistoryForCompletedToday(mode) {
-    if (!hasConsent()) return;
-    const today = _todayStr();
-    // Check if already played today
-    const playedToday = localStorage.getItem(STORAGE_KEYS.PLAYED_PREFIX + mode) === today;
-    if (!playedToday) return;
-    // Check if already in HISTORY
-    const history = getGameHistory();
-    const exists = history.some(h => h.date === today && h.mode === mode);
-    if (exists) return;
-    // Try to reconstruct from saved game state
-    const raw = localStorage.getItem(STORAGE_KEYS.STATE_PREFIX + mode);
-    if (!raw) return;
-    try {
-        const state = JSON.parse(raw);
-        if (!state.finished) return;
-        // Add to history
-        history.push({
-            date: today,
-            mode: mode,
-            won: state.won,
-            attempts: state.attempts,
-            guesses: state.guesses || []
-        });
-        localStorage.setItem(STORAGE_KEYS.HISTORY, JSON.stringify(history));
-    } catch (e) {
-        // Ignore
-    }
-}
 
 function markPlayedToday(mode) {
     if (hasConsent()) {
