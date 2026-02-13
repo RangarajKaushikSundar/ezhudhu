@@ -240,6 +240,11 @@ hardModeToggle.addEventListener("change", () => {
 
     // Reset and reinitialize game
     initializeGame();
+    // Show keyboard if View Results is not visible
+    const viewBtn = document.getElementById("viewResultsBtn");
+    if (viewBtn && viewBtn.style.display === "none" && keyboardWrapper) {
+        keyboardWrapper.style.display = "block";
+    }
 });
 
 /* ---------- TOGGLE TANGLISH IN HARD MODE ---------- */
@@ -451,6 +456,8 @@ function endGame(win, isRestore = false) {
         // Show "View Results" button so user can open modal on demand
         const viewBtn = document.getElementById("viewResultsBtn");
         viewBtn.style.display = "block";
+        // Hide the keyboard when View Results is shown
+        if (keyboardWrapper) keyboardWrapper.style.display = "none";
         viewBtn.onclick = () => {
             modal.style.display = "flex";
             // Render stats in resultmodal as well
